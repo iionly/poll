@@ -190,6 +190,8 @@ function poll_prepare_edit_body_vars($poll = null) {
 	$values = array(
 		'question' => null,
 		'description' => null,
+		'close_date' => null,
+		'open_poll' => null,
 		'tags' => null,
 		'front_page' => null,
 		'access_id' => ACCESS_DEFAULT,
@@ -274,6 +276,7 @@ function poll_get_page_list($page_type, $container_guid = null) {
 					$params['title'] = elgg_echo('poll:not_me', array(htmlspecialchars($container_entity->name)));
 					$params['filter_context'] = "";
 				}
+				$params['sidebar'] = elgg_view('poll/sidebar');
 				break;
 			case 'friends':
 				$container_entity = get_user($container_guid);
@@ -293,6 +296,7 @@ function poll_get_page_list($page_type, $container_guid = null) {
 			case 'all':
 				$params['filter_context'] = 'all';
 				$params['title'] = elgg_echo('item:object:poll');
+				$params['sidebar'] = elgg_view('poll/sidebar');
 				break;
 		}
 

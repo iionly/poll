@@ -7,37 +7,30 @@ return array(
 	 */
 	'poll' => "Polls",
 	'poll:add' => "New Poll",
-	'poll:votes' => "votes",
-	'poll:user' => "%s's poll",
 	'poll:group_poll' => "Group polls",
 	'poll:group_poll:listing:title' => "%s's polls",
-	'poll:user:friends' => "%s's friends' polls",
 	'poll:your' => "Your polls",
 	'poll:not_me' => "%s's polls",
-	'poll:posttitle' => "%s's polls: %s",
 	'poll:friends' => "Friends' polls",
-	'poll:not_me_friends' => "%s's friend's polls",
-	'poll:yourfriends' => "Your friends' latest polls",
-	'poll:everyone' => "All site polls",
 	'poll:addpost' => "Create a poll",
 	'poll:editpost' => "Edit a poll: %s",
 	'poll:edit' => "Edit a poll",
-	'poll:text' => "Poll text",
-	'poll:strapline' => "%s",
 	'item:object:poll' => 'Polls',
 	'item:object:poll_choice' => "Poll choices",
 	'poll:question' => "Poll question",
 	'poll:description' => "Description (optional)",
-	'poll:responses' => "Response choices",
-	'poll:results' => "[+] Show the results",
+	'poll:responses' => "Vote choices",
 	'poll:show_results' => "Show results",
 	'poll:show_poll' => "Show poll",
-	'poll:add_choice' => "Add response choice",
+	'poll:add_choice' => "Add vote choice",
 	'poll:delete_choice' => "Delete this choice",
+	'poll:close_date' => "Poll closing date (optional)",
+	'poll:voting_ended' => "Voting for this poll ended on %s.",
+	'poll:poll_closing_date' => "(Poll closing date: %s)",
 
-	'poll:convert:description' => 'ATTENTION: there were %s existing polls found that still have the old response data structure. These polls won\'t work correctly on this version of the poll plugin.',
+	'poll:convert:description' => 'ATTENTION: there were %s existing polls found that still have the old vote choices data structure. These polls won\'t work correctly on this version of the poll plugin.',
 	'poll:convert' => 'Update existing polls now',
-	'poll:convert:confirm' => 'The update is irreversible. Are you sure you want to convert the poll responses?',
+	'poll:convert:confirm' => 'The update is irreversible. Are you sure you want to convert the poll vote choices data structure?',
 
 	'poll:settings:group:title' => "Allow group polls?",
 	'poll:settings:group_poll_default' => "yes, on by default",
@@ -47,6 +40,8 @@ return array(
 	'poll:settings:group_access:admins' => "group owners and admins only",
 	'poll:settings:group_access:members' => "any group member",
 	'poll:settings:front_page:title' => "Admins can make a single poll at a time the site's \"Poll of the day\"? (Widget Manager plugin required for adding the corresponding widget to the index page)",
+	'poll:settings:allow_close_date:title' => "Allow setting a closing date for polls? (afterwards the results can still be viewed but voting is no longer permitted)",
+	'poll:settings:allow_open_poll:title' => "Allow open polls? (open polls show which user voted for which poll choice; if this option is enabled, admins can see who voted what on any polls)",
 	'poll:none' => "No polls found.",
 	'poll:permission_error' => "You do not have permission to edit this poll.",
 	'poll:vote' => "Vote",
@@ -57,6 +52,8 @@ return array(
 	'poll:settings:site_access:all' => "any logged-in user",
 	'poll:can_not_create' => "You do not have permission to create polls.",
 	'poll:front_page_label' => "Make this poll the site's new \"Poll of the day\"",
+	'poll:open_poll_label' => "Show in results which members voted for which choice (open poll)",
+	'poll:show_voters' => "Show voters",
 
 	/**
 	 * Poll widget
@@ -74,11 +71,23 @@ return array(
 	'poll:widget:nonefound' => "No polls found.",
 	'poll:widget:think' => "Let %s know what you think!",
 	'poll:enable_poll' => "Enable polls",
-	'poll:group_identifier' => "(in %s)",
-	'poll:noun_response' => "response",
-	'poll:noun_responses' => "responses",
+	'poll:noun_response' => "vote",
+	'poll:noun_responses' => "votes",
 	'poll:settings:yes' => "yes",
 	'poll:settings:no' => "no",
+
+	'poll:month:01' => 'January',
+	'poll:month:02' => 'February',
+	'poll:month:03' => 'March',
+	'poll:month:04' => 'April',
+	'poll:month:05' => 'May',
+	'poll:month:06' => 'June',
+	'poll:month:07' => 'July',
+	'poll:month:08' => 'August',
+	'poll:month:09' => 'September',
+	'poll:month:10' => 'October',
+	'poll:month:11' => 'November',
+	'poll:month:12' => 'December',
 
 	/**
 	 * Notifications
@@ -119,10 +128,8 @@ View and vote on the poll:
 	/**
 	 * Error messages
 	 */
-	'poll:save:failure' => "Your poll could not be saved. Please try again.",
-	'poll:blank' => "Sorry: you need to fill in both the question and responses before you can make a poll.",
+	'poll:blank' => "Sorry: you need to fill in both the question and add at least one vote choice before you can create the poll.",
 	'poll:novote' => "Sorry: you need to choose an option to vote in this poll.",
 	'poll:notfound' => "Sorry: we could not find the specified poll.",
-	'poll:nonefound' => "No polls of %s were found.",
 	'poll:notdeleted' => "Sorry: we could not delete this poll."
 );

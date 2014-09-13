@@ -25,10 +25,49 @@ if (isset($vars['entity'])) {
 	//get the count of responses
 	$user_responses_count = $vars['entity']->countAnnotations('vote');
 
+	$allow_open_poll = elgg_get_plugin_setting('allow_open_poll', 'poll');
+	if ($allow_open_poll) {
+		$open_poll = ($vars['entity']->open_poll == 1);
+	} else {
+		$open_poll = false;
+	}
+
+	//populate array
+	$vote_id=0;
 	foreach($responses as $response)
 	{
 		//get count per response
 		$response_count = poll_get_response_count($response, $user_responses);
+
+		$voted_users = '';
+		// show members if this poll is an open poll or if an admin is logged in (in the latter case open polls must be enabled in plugin settings)
+		if (($open_poll || ($allow_open_poll && elgg_is_admin_logged_in()))) {
+			$vote_id++;
+			$response_annotations = elgg_get_annotations(array(
+				'guid' => $vars['entity']->guid,
+				'annotation_name' => 'vote',
+				'annotation_value' => $response,
+			));
+			// css hide when admins are watching secret ballot, can manually open users' list later by clicking on label
+			$display_style = ($open_poll) ? '1' : 'style="display:none;"';
+			$user_guids = array();
+			foreach($response_annotations as $ur) {
+				$user_guids[] = $ur->owner_guid;
+			}
+			if (!empty($user_guids)) {
+				// form voted users' icons list div
+				$voted_users = '<div class="poll_users-voted" '.$display_style.' id="poll_users-vote-'.$vote_id.'">';
+				$voted_users .= elgg_list_entities(array(
+					'guids' => $user_guids,
+					'full_view' => false,
+					'pagination' => false,
+					'list_type' => 'users',
+					'gallery_class' => 'elgg-gallery-users',
+					'size' => 'tiny',
+				));
+				$voted_users .= '</div>';
+			}
+		}
 
 		//calculate %
 		if ($response_count && $user_responses_count) {
@@ -40,13 +79,14 @@ if (isset($vars['entity'])) {
 //html
 ?>
 <div class="poll_progress_indicator">
-	<label><?php echo $response . " (" . $response_count . ")"; ?> </label><br>
+	<label title='<?php echo elgg_echo("poll:show_voters"); ?>' class='poll_vote-label' onClick='$("#poll_users-vote-<?php echo $vote_id; ?>").toggle();'><?php echo $response . " (" . $response_count . ")"; ?> </label><br>
 	<div class="poll_progressBarContainer" align="left">
 		<div class="poll_filled-bar"
 			style="width: <?php echo $response_percentage; ?>%">
 		</div>
 	</div>
 </div>
+	<?php echo $voted_users; ?>
 <br>
 
 <?php

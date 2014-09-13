@@ -108,4 +108,24 @@ $body .= elgg_view('input/radio', array('name' => 'params[front_page]', 'value' 
 $body .= '<br />';
 
 
+$allow_close_date = elgg_get_plugin_setting('allow_close_date', 'poll');
+if (!$allow_close_date) {
+	$allow_close_date = 'no';
+}
+$body .= elgg_echo('poll:settings:allow_close_date:title');
+$body .= '<br />';
+$body .= elgg_view('input/radio', array('name' => 'params[allow_close_date]', 'value' => $allow_close_date, 'options' => $yn_options));
+$body .= '<br />';
+
+
+$allow_open_poll = elgg_get_plugin_setting('allow_open_poll', 'poll');
+if (!$allow_open_poll) {
+	$allow_open_poll = 'no';
+}
+$body .= elgg_echo('poll:settings:allow_open_poll:title');
+$body .= '<br />';
+$body .= elgg_view('input/radio', array('name' => 'params[allow_open_poll]', 'value' => $allow_open_poll, 'options' => $yn_options));
+$body .= '<br />';
+
+
 echo $body;

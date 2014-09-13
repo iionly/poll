@@ -15,6 +15,8 @@ $question = get_input('question');
 $description = get_input('description');
 $number_of_choices = (int) get_input('number_of_choices', 0);
 $front_page = get_input('front_page');
+$close_date = (int)get_input('close_date');
+$open_poll = (int)get_input('open_poll');
 $tags = get_input('tags');
 $access_id = get_input('access_id');
 $container_guid = get_input('container_guid');
@@ -83,6 +85,16 @@ if ($guid) {
 				$poll->tags = $tagarray;
 			}
 
+			if ($close_date) {
+				$poll->close_date = $close_date;
+			} else {
+				if (!empty($poll->close_date)) {
+					$poll->deleteMetadata('close_date');
+				}
+			}
+
+			$poll->open_poll = (!$open_poll) ? 0 : 1;
+
 			// Success message
 			system_message(elgg_echo("poll:edited"));
 		}
@@ -127,6 +139,12 @@ if ($guid) {
 		if(!empty($description)) {
 			$poll->description = $description;
 		}
+
+		if ($close_date) {
+			$poll->close_date = $close_date;
+		}
+
+		$poll->open_poll = (!$open_poll) ? 0 : 1;
 
 		if (!$poll->save()) {
 			register_error(elgg_echo("poll:error"));

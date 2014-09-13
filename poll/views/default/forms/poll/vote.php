@@ -16,7 +16,7 @@ $responses = poll_get_choice_array($poll);
 
 $response_inputs = elgg_view('input/radio', array('name' => 'response', 'options' => $responses));
 
-$submit_input = '<br />'.elgg_view('input/submit', array('rel' => $poll->guid, 'class' => 'elgg-button-submit poll-vote-button', 'name' => 'submit_vote', 'value' => elgg_echo('poll:vote')));
+$submit_input = '<br>' . elgg_view('input/submit', array('rel' => $poll->guid, 'class' => 'elgg-button-submit poll-vote-button', 'name' => 'submit_vote', 'value' => elgg_echo('poll:vote')));
 
 if (isset($vars['entity'])) {
 	$entity_hidden = elgg_view('input/hidden', array('name' => 'guid', 'value' => $poll->guid));
@@ -27,6 +27,7 @@ if (isset($vars['entity'])) {
 
 $form_body =  "<p>" . $response_inputs . "</p>";
 $form_body .= "<p>" . $submit_input . $entity_hidden . "</p>";
+
 if ($vars['form_display']) {
 	echo '<div id="poll-vote-form-container-'.$poll->guid.'" style="display:'.$vars['form_display'].'">';
 } else {

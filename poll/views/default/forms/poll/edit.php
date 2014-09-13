@@ -27,6 +27,36 @@ $access_id = $vars['fd']['access_id'];
 	<?php echo elgg_view('poll/input/choices', array('poll' => $poll)); ?>
 </div>
 
+<?php
+$allow_close_date = elgg_get_plugin_setting('allow_close_date','poll');
+if ($allow_close_date == 'yes') {
+	$close_date = $vars['fd']['close_date'];
+?>
+<div>
+	<label><?php echo elgg_echo('poll:close_date'); ?></label>
+	<?php echo  elgg_view('input/date', array('name' => 'close_date', 'timestamp' => true, 'value' => $close_date)); ?>
+</div>
+<?php
+}
+?>
+
+<?php
+$allow_open_poll = elgg_get_plugin_setting('allow_open_poll','poll');
+if($allow_open_poll == 'yes') {
+	$open_poll_input = '<p>';
+	if ($vars['fd']['open_poll']) {
+		$open_poll_input .= elgg_view('input/checkbox', array('name' => 'open_poll','value' => 1, 'checked' => 'checked'));
+	} else {
+		$open_poll_input .= elgg_view('input/checkbox', array('name' => 'open_poll','value' => 1));
+	}
+	$open_poll_input .= elgg_echo('poll:open_poll_label');
+	$open_poll_input .= '</p>';
+} else {
+	$open_poll_input = '';
+}
+echo $open_poll_input;
+?>
+
 <div>
 	<label><?php echo elgg_echo('tags'); ?></label>
 	<?php echo  elgg_view('input/tags', array('name' => 'tags', 'value' => $tags)); ?>
@@ -39,7 +69,6 @@ $access_id = $vars['fd']['access_id'];
 
 
 <?php
-
 $poll_front_page = elgg_get_plugin_setting('front_page','poll');
 
 if(elgg_is_admin_logged_in() && ($poll_front_page == 'yes')) {

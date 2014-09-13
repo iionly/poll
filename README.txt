@@ -1,6 +1,6 @@
 Poll plugin for Elgg 1.9
-Latest Version: 1.9.0
-Released: 2014-08-24
+Latest Version: 1.9.1
+Released: 2014-09-14
 Contact: iionly@gmx.de
 License: GNU General Public License version 2
 Copyright: (C) iionly, (C) Kevin Jardine, (C) John Mellberg and Dr Sanu P Moideen
@@ -16,6 +16,7 @@ With this new release I've tried to merge the two classes of the poll(s) plugin 
 
 Installation:
 
+(0. If you have a previous version of the poll plugin installed, first disable the poll plugin and remove the poll plugin folder of the old version from your mod folder,)
 1. Copy the poll plugin folder into you mod folder,
 2. Enable the Poll plugin in the admin section of your site,
 3. Check the Poll plugin settings and adjust the settings according to your preference.
@@ -23,6 +24,18 @@ Installation:
 
 
 Changelog:
+
+1.9.1:
+
+- Updated version 1.8.1 for Elgg 1.9.
+
+1.8.1:
+
+- Optional time limitation on polls (poll results are still shown afterwards but voting is no longer possible). Time limitation on polls can be enabled/disabled by plugin setting. Thanks to Jerome Bakker for the inspiration to this feature (and some initial code for implementing it, too),
+- Optionally make a poll an open poll (it's visible who voted for which poll choice). Thanks to tacid for the inspiration to this feature (and most of the code for implementing it, too),
+- Latest comments made on polls in sidebar on "All" and "Mine" poll pages,
+- Consistent display of poll creator, poll creation date, number of votes, number of comments and tags in all widgets, the list view and full view,
+- Removal of files no longer in use (that's why you should remove the plugin folder of any previous version to get rid of them, too).
 
 1.9.0:
 

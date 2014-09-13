@@ -23,6 +23,24 @@ if (isset($vars['entity'])) {
 	$tags = elgg_view('output/tags', array('tags' => $poll->tags));
 	$date = elgg_view_friendly_time($poll->time_created);
 
+	$allow_close_date = elgg_get_plugin_setting('allow_close_date','poll');
+	if (($allow_close_date == 'yes') && (isset($poll->close_date))) {
+		$date_day = gmdate('j', $poll->close_date);
+		$date_month = gmdate('m', $poll->close_date);
+		$date_year = gmdate('Y', $poll->close_date);
+		$friendly_time = $date_day . '. ' . elgg_echo("poll:month:$date_month") . ' ' . $date_year;
+
+		$today = date("Y/m/d");
+		$end_of_day_close_date = $poll->close_date + 86400; // input/date saves beginning of day and we want to include closing date day in poll
+		$deadline = date("Y", $end_of_day_close_date).'/'.date("m", $end_of_day_close_date).'/'.date("d", $end_of_day_close_date);
+		if ((strtotime($deadline)-strtotime($today)) <= 0) {
+			$poll_state = 'closed';
+		} else {
+			$poll_state = 'open';
+		}
+		$closing_date .= "<div class='poll_closing-date-{$poll_state}'><b>" . elgg_echo('poll:poll_closing_date', array($friendly_time)) . '</b></div>';
+	}
+
 	// TODO: support comments off
 	// The "on" status changes for comments, so best to check for !Off
 	if ($poll->comments_on != 'Off') {
@@ -31,9 +49,9 @@ if (isset($vars['entity'])) {
 		if ($comments_count != 0) {
 			$text = elgg_echo("comments") . " ($comments_count)";
 			$comments_link = elgg_view('output/url', array(
-						'href' => $poll->getURL() . '#poll-comments',
-						'text' => $text,
-						'is_trusted' => true
+				'href' => $poll->getURL() . '#poll-comments',
+				'text' => $text,
+				'is_trusted' => true
 			));
 		} else {
 			$comments_link = '';
@@ -54,8 +72,8 @@ if (isset($vars['entity'])) {
 		));
 	}
 
-	$subtitle = "$author_text $date $comments_link $categories";
 	if ($full) {
+		$subtitle = "$closing_date $author_text $date $comments_link $categories";
 		$params = array(
 			'entity' => $poll,
 			'title' => false,
@@ -78,9 +96,19 @@ if (isset($vars['entity'])) {
 			echo "<br>";
 		}
 
-		echo elgg_view('poll/body',$vars);
+		echo elgg_view('poll/body', $vars);
 
 	} else {
+		$responses = $poll->countAnnotations('vote');
+		if ($responses == 1) {
+			$noun = elgg_echo('poll:noun_response');
+		} else {
+			$noun = elgg_echo('poll:noun_responses');
+		}
+		$responses = "<div>" . $responses . " " . $noun . "</div>";
+
+		$subtitle = "$closing_date $responses $author_text $date $comments_link $categories";
+
 		// brief view
 		$params = array(
 			'entity' => $poll,
