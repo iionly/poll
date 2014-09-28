@@ -74,7 +74,7 @@ function poll_init() {
 		}
 
 		//register title urls for widgets
-		elgg_register_plugin_hook_handler('widget_url', 'widget_manager', "poll_widget_urls", 499);
+		elgg_register_plugin_hook_handler("entity:url", "object", "poll_widget_urls");
 	}
 
 	// Register actions

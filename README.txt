@@ -1,6 +1,6 @@
 Poll plugin for Elgg 1.9
-Latest Version: 1.9.1
-Released: 2014-09-14
+Latest Version: 1.9.1.1
+Released: 2014-09-26
 Contact: iionly@gmx.de
 License: GNU General Public License version 2
 Copyright: (C) iionly, (C) Kevin Jardine, (C) John Mellberg and Dr Sanu P Moideen
@@ -24,6 +24,10 @@ Installation:
 
 
 Changelog:
+
+1.9.1.1:
+
+- Fixed a deprecation issue (with the hopefully soon to be released Widget Manager plugin for Elgg 1.9) with widgets urls (clickable title link).
 
 1.9.1:
 
