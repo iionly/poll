@@ -130,6 +130,7 @@ Schau Dir die Umfrage an und gib Deine Stimme ab:
 	 */
 	'poll:blank' => "Entschuldigung: Du mußt sowohl im Frage-Eingabefeld etwas eintragen und auch mindestens eine Auswahlmöglichkeit für die Umfrage hinzufügen.",
 	'poll:novote' => "Entschuldigung: Du mußt eine der angebotenen Auswahlmöglichkeiten selektieren, wenn Du in dieser Umfrage Deine Stimme abgeben willst.",
+	'poll:alreadyvoted' => "Entschuldigung: Du kannst leider nur einmal abstimmen.",
 	'poll:notfound' => "Entschuldigung: die gewünschte Umfrage konnte nicht gefunden werden.",
 	'poll:notdeleted' => "Entschuldigung: beim Löschen der Umfrage ist ein Fehler aufgetreten."
 );

@@ -130,6 +130,7 @@ View and vote on the poll:
 	 */
 	'poll:blank' => "Sorry: you need to fill in both the question and add at least one vote choice before you can create the poll.",
 	'poll:novote' => "Sorry: you need to choose an option to vote in this poll.",
+	'poll:alreadyvoted' => "Sorry: you can vote only once.",
 	'poll:notfound' => "Sorry: we could not find the specified poll.",
 	'poll:notdeleted' => "Sorry: we could not delete this poll."
 );

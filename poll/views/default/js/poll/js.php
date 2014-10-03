@@ -3,16 +3,19 @@ elgg.provide('elgg.poll');
 elgg.poll.init = function() {
 	$('.poll-show-link').live('click',elgg.poll.toggleResults);
 	$('.poll-vote-button').live('click',function(e) {
-		e.preventDefault();
 		var guid = $(this).attr("rel");
-		// prevent multiple clicks
-		$(this).attr("disabled", "disabled");
+
 		// submit the vote and display the response when it arrives
-		elgg.action('action/poll/vote', {data: $('#poll-vote-form-'+guid).serialize(),
-			success : function(response) {
-							$('#poll-container-'+guid).html(response.result);
-						}
-			});
+		elgg.action('action/poll/vote', {
+			data: $('#poll-vote-form-'+guid).serialize(),
+			success: function(response) {
+				if (response.output) {
+					$('#poll-container-'+guid).html(response.output);
+				}
+			}
+		});
+
+		e.preventDefault();
 	});
 };
 
