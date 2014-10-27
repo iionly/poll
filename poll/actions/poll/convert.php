@@ -13,7 +13,7 @@ $poll_batch = new ElggBatch('elgg_get_entities', array(
 ));
 
 foreach ($poll_batch as $poll) {
-	if ((!poll_get_choices($poll)) && is_array($poll->responses)) {
+	if (!$poll->getChoices() && is_array($poll->responses)) {
 		$i = 0;
 		$choices = $poll->responses;
 		foreach($choices as $choice) {

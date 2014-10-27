@@ -11,7 +11,8 @@ $guid = (int) get_input('guid');
 
 // Make sure we actually have permission to edit
 $poll = get_entity($guid);
-if (elgg_instanceof($poll, 'object', 'poll') && $poll->canEdit()) {
+
+if ($poll instanceof Poll && $poll->canEdit()) {
 
 	// Get container
 	$container = $poll->getContainerEntity();

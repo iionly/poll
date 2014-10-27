@@ -6,21 +6,20 @@ $body = '';
 $i = 0;
 
 if ($poll) {
-	$choices = poll_get_choices($poll);
-	if ($choices) {
-		foreach($choices as $choice) {
-			$body .= '<div id="choice_container_'.$i.'">';
-			$body .= elgg_view('input/text', array(
-						'name' => 'choice_text_'.$i,
-						'value' => $choice->text,
-						'class' => 'poll_input-poll-choice'
-			));
-			$body .= '<a href="#" alt="'.elgg_echo('poll:delete_choice').'" title="'.elgg_echo('poll:delete_choice').'" id="choice_delete_'.$i.'" onclick="javascript:poll_delete_choice('.$i.'); return false;">';
-			$body .= '<img src="'.elgg_get_site_url().'mod/poll/graphics/16-em-cross.png"></a>';
-			$body .= '</div>';
+	$choices = $poll->getChoices();
 
-			$i += 1;
-		}
+	foreach ($choices as $choice) {
+		$body .= '<div id="choice_container_'.$i.'">';
+		$body .= elgg_view('input/text', array(
+					'name' => 'choice_text_'.$i,
+					'value' => $choice->text,
+					'class' => 'poll_input-poll-choice'
+		));
+		$body .= '<a href="#" alt="'.elgg_echo('poll:delete_choice').'" title="'.elgg_echo('poll:delete_choice').'" id="choice_delete_'.$i.'" onclick="javascript:poll_delete_choice('.$i.'); return false;">';
+		$body .= '<img src="'.elgg_get_site_url().'mod/poll/graphics/16-em-cross.png"></a>';
+		$body .= '</div>';
+
+		$i += 1;
 	}
 }
 

@@ -64,7 +64,7 @@ if ($guid) {
 	// editing an existing poll
 	$poll = get_entity($guid);
 
-	if (!elgg_instanceof($poll, 'object', 'poll')) {
+	if (!$poll instanceof Poll) {
 		register_error(elgg_echo('poll:notfound'));
 		forward(REFERER);
 	}
@@ -81,11 +81,8 @@ if ($guid) {
 } else {
 	$new = true;
 
-	// Initialise a new ElggObject
-	$poll = new ElggObject();
-
-	// Tell the system it's a poll
-	$poll->subtype = "poll";
+	// Initialise a new Poll
+	$poll = new Poll();
 
 	// Set its owner to the current user
 	$poll->owner_guid = $user->guid;

@@ -11,7 +11,7 @@ $guid = get_input('guid');
 //get the poll entity
 $poll = get_entity($guid);
 
-if (!elgg_instanceof($poll, 'object', 'poll')) {
+if (!$poll instanceof Poll) {
 	register_error(elgg_echo('poll:notfound'));
 	forward(REFERER);
 }

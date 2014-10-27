@@ -1,46 +1,12 @@
 <?php
 
-/**
- * checks for votes on the poll
- * @param ElggEntity $poll
- * @param guid
- * @return true/false
- */
-function poll_check_for_previous_vote($poll, $user_guid) {
-	$options = array(
-		'guid' => $poll->guid,
-		'type' => "object",
-		'subtype' => "poll",
-		'annotation_name' => "vote",
-		'annotation_owner_guid' => $user_guid,
-		'limit' => 1
-	);
-	$votes = elgg_get_annotations($options);
-	if ($votes) {
-		return true;
-	} else {
-		return false;
-	}
-}
-
-function poll_get_choices($poll) {
-	$options = array(
-		'relationship' => 'poll_choice',
-		'relationship_guid' => $poll->guid,
-		'inverse_relationship' => true,
-		'order_by_metadata' => array('name'=>'display_order', 'direction'=>'ASC')
-	);
-	return elgg_get_entities_from_relationship($options);
-}
-
 function poll_get_choice_array($poll) {
-	$choices = poll_get_choices($poll);
 	$responses = array();
-	if ($choices) {
-		foreach($choices as $choice) {
-			$responses[$choice->text] = $choice->text;
-		}
+
+	foreach($poll->getChoices() as $choice) {
+		$responses[$choice->text] = $choice->text;
 	}
+
 	return $responses;
 }
 
@@ -63,11 +29,8 @@ function poll_add_choices($poll, $choices) {
 }
 
 function poll_delete_choices($poll) {
-	$choices = poll_get_choices($poll);
-	if ($choices) {
-		foreach($choices as $choice) {
-			$choice->delete();
-		}
+	foreach($poll->getChoices() as $choice) {
+		$choice->delete();
 	}
 }
 
@@ -114,7 +77,8 @@ function poll_get_page_edit($page_type, $guid = 0) {
 	// Get the post, if it exists
 	if ($page_type == 'edit') {
 		$poll = get_entity($guid);
-		if (elgg_instanceof($poll, 'object', 'poll')) {
+		
+		if ($poll instanceof Poll) {
 			$container_guid = $poll->container_guid;
 			elgg_set_page_owner_guid($container_guid);
 			$title = elgg_echo('poll:editpost', array($poll->title));
@@ -330,7 +294,7 @@ function poll_get_page_list($page_type, $container_guid = null) {
 function poll_get_page_view($guid) {
 	elgg_load_js('elgg.poll');
 	$poll = get_entity($guid);
-	if (elgg_instanceof($poll, 'object', 'poll')) {
+	if ($poll instanceof Poll) {
 		// Set the page owner
 		$page_owner = $poll->getContainerEntity();
 		elgg_set_page_owner_guid($page_owner->guid);

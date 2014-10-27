@@ -8,8 +8,8 @@ if($msg = elgg_extract('msg', $vars)) {
 }
 
 if (elgg_is_logged_in()) {
-	$user_guid = elgg_get_logged_in_user_guid();
-	$can_vote = !poll_check_for_previous_vote($poll, $user_guid);
+	$user = elgg_get_logged_in_user_entity();
+	$can_vote = !$poll->hasVoted($user);
 
 	//if user has voted, show the results
 	if (!$can_vote) {

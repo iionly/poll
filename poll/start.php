@@ -162,7 +162,7 @@ function polls_page_handler($page) {
  */
 function poll_url($hook, $type, $url, $params) {
 	$poll = $params['entity'];
-	if (elgg_instanceof($poll, 'object', 'poll')) {
+	if ($poll instanceof Poll) {
 		if (!$poll->getOwnerEntity()) {
 			// default to a standard view if no owner.
 			return false;
@@ -177,7 +177,7 @@ function poll_url($hook, $type, $url, $params) {
  * Add a menu item to an owner block
  */
 function poll_owner_block_menu($hook, $type, $return, $params) {
-	if (elgg_instanceof($params['entity'], 'user')) {
+	if ($params['entity'] instanceof ElggUser) {
 		$url = "poll/owner/{$params['entity']->username}";
 		$item = new ElggMenuItem('poll', elgg_echo('poll'), $url);
 		$return[] = $item;
