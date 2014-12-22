@@ -74,8 +74,6 @@ if ($guid) {
 		forward(REFERER);
 	}
 
-	$poll->deleteChoices();
-
 	// Success message
 	$message = elgg_echo("poll:edited");
 } else {
@@ -105,7 +103,8 @@ if (!$poll->save()) {
 	forward(REFERER);
 }
 
-poll_add_choices($poll, $new_choices);
+$poll->setChoices($new_choices);
+
 poll_manage_front_page($poll, $front_page);
 
 elgg_clear_sticky_form('poll');

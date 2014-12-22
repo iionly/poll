@@ -10,29 +10,6 @@ function poll_get_choice_array($poll) {
 	return $responses;
 }
 
-function poll_add_choices($poll, $choices) {
-	$i = 0;
-	if ($choices) {
-		foreach($choices as $choice) {
-			$poll_choice = new ElggObject();
-			$poll_choice->owner_guid = $poll->owner_guid;
-			$poll_choice->container_guid = $poll->container_guid;
-			$poll_choice->subtype = "poll_choice";
-			$poll_choice->text = $choice;
-			$poll_choice->display_order = $i*10;
-			$poll_choice->access_id = $poll->access_id;
-			$poll_choice->save();
-			add_entity_relationship($poll_choice->guid, 'poll_choice', $poll->guid);
-			$i += 1;
-		}
-	}
-}
-
-function poll_replace_choices($poll, $new_choices) {
-	$poll->deleteChoices();
-	poll_add_choices($poll, $new_choices);
-}
-
 function poll_activated_for_group($group) {
 	$group_poll = elgg_get_plugin_setting('group_poll', 'poll');
 	if ($group && ($group_poll != 'no')) {

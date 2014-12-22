@@ -67,4 +67,32 @@ class Poll extends ElggObject {
 			$choice->delete();
 		}
 	}
+
+	/**
+	 * Adds or updates poll choices
+	 *
+	 * @param array $choices
+	 */
+	public function setChoices(array $choices) {
+		if (empty($choices)) {
+			return false;
+		}
+
+		$this->deleteChoices();
+
+		$i = 0;
+		foreach ($choices as $choice) {
+			$poll_choice = new ElggObject();
+			$poll_choice->owner_guid = $this->owner_guid;
+			$poll_choice->container_guid = $this->container_guid;
+			$poll_choice->subtype = "poll_choice";
+			$poll_choice->text = $choice;
+			$poll_choice->display_order = $i*10;
+			$poll_choice->access_id = $this->access_id;
+			$poll_choice->save();
+
+			add_entity_relationship($poll_choice->guid, 'poll_choice', $this->guid);
+			$i += 1;
+		}
+	}
 }
