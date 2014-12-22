@@ -4,8 +4,6 @@
  * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU Public License version 2
  */
 
-elgg_load_library('elgg:poll');
-
 // Get input data
 $guid = (int) get_input('guid');
 
@@ -17,7 +15,7 @@ if ($poll instanceof Poll && $poll->canEdit()) {
 	// Get container
 	$container = $poll->getContainerEntity();
 	// Delete the poll!
-	poll_delete_choices($poll);
+	$poll->deleteChoices();
 	if ($poll->delete()) {
 		// Success message
 		system_message(elgg_echo("poll:deleted"));

@@ -28,14 +28,8 @@ function poll_add_choices($poll, $choices) {
 	}
 }
 
-function poll_delete_choices($poll) {
-	foreach($poll->getChoices() as $choice) {
-		$choice->delete();
-	}
-}
-
 function poll_replace_choices($poll, $new_choices) {
-	poll_delete_choices($poll);
+	$poll->deleteChoices();
 	poll_add_choices($poll, $new_choices);
 }
 
@@ -71,32 +65,32 @@ function poll_get_page_edit($page_type, $guid = 0) {
 		$page_owner = elgg_get_logged_in_user_entity();
 		elgg_set_page_owner_guid($page_owner->guid);
 	}
-	
+
 	$form_vars = array('id'=>'poll-edit-form');
 
 	// Get the post, if it exists
 	if ($page_type == 'edit') {
 		$poll = get_entity($guid);
-		
+
 		if ($poll instanceof Poll) {
 			$container_guid = $poll->container_guid;
 			elgg_set_page_owner_guid($container_guid);
 			$title = elgg_echo('poll:editpost', array($poll->title));
-			
+
 			$body_vars = array(
 				'fd' => poll_prepare_edit_body_vars($poll),
 				'entity' => $poll
 			);
-	
+
 			if ($poll->canEdit()) {
 				$content = elgg_view_form("poll/edit", $form_vars, $body_vars);
 			} else {
 				$content = elgg_echo('poll:permission_error');
 			}
-			
+
 			// set breadcrumb
 			elgg_push_breadcrumb(elgg_echo('item:object:poll'), 'poll/all');
-			
+
 			$container = get_entity($container_guid);
 			if (elgg_instanceof($container, 'group')) {
 				elgg_push_breadcrumb($container->name, 'poll/group/' . $container->getGUID());
@@ -114,21 +108,21 @@ function poll_get_page_edit($page_type, $guid = 0) {
 		if ($guid) {
 			elgg_set_page_owner_guid($guid);
 			$container = get_entity($guid);
-			
+
 			elgg_push_breadcrumb($container->name, 'poll/group/' . $container->getGUID());
 		} else {
 			$user = elgg_get_logged_in_user_entity();
 			elgg_set_page_owner_guid($user->getGUID());
-			
+
 			elgg_push_breadcrumb($user->name, 'poll/owner/' . $user->username);
 		}
 		elgg_push_breadcrumb(elgg_echo('poll:add'));
-		
+
 		$title = elgg_echo('poll:addpost');
 		$body_vars = array('fd' => poll_prepare_edit_body_vars(), 'container_guid' => $guid);
 		$content = elgg_view_form("poll/edit", $form_vars, $body_vars);
 	}
-	
+
 	$params = array(
 		'title' => $title,
 		'content' => $content,
@@ -196,7 +190,7 @@ function poll_get_page_list($page_type, $container_guid = null) {
 
 	// set breadcrumb
 	elgg_push_breadcrumb(elgg_echo('item:object:poll'), 'poll/all');
-	
+
 	if ($page_type == 'group') {
 		$group = get_entity($container_guid);
 		if (!elgg_instanceof($group, 'group') || !poll_activated_for_group($group)) {
@@ -266,7 +260,7 @@ function poll_get_page_list($page_type, $container_guid = null) {
 
 		$poll_site_access = elgg_get_plugin_setting('site_access', 'poll');
 
-		if ((elgg_is_logged_in() && ($poll_site_access != 'admins')) || elgg_is_admin_logged_in()) {		
+		if ((elgg_is_logged_in() && ($poll_site_access != 'admins')) || elgg_is_admin_logged_in()) {
 			elgg_register_menu_item('title', array(
 				'name' => 'add',
 				'href' => "poll/add",
@@ -314,8 +308,8 @@ function poll_get_page_view($guid) {
 		elgg_push_breadcrumb($poll->title);
 	} else {
 		// Display the 'post not found' page instead
-		$title = elgg_echo("poll:notfound");	
-		$content = elgg_view("poll/notfound");	
+		$title = elgg_echo("poll:notfound");
+		$content = elgg_view("poll/notfound");
 		elgg_push_breadcrumb(elgg_echo('item:object:poll'), "poll/all");
 		elgg_push_breadcrumb($title);
 	}

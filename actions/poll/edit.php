@@ -74,7 +74,7 @@ if ($guid) {
 		forward(REFERER);
 	}
 
-	poll_delete_choices($poll);
+	$poll->deleteChoices();
 
 	// Success message
 	$message = elgg_echo("poll:edited");

@@ -16,7 +16,7 @@ class Poll extends ElggObject {
 
 	/**
 	 * Check whether the user has voted in this poll
-	 * 
+	 *
 	 * @param ElggUser $user
 	 * @return boolean
 	 */
@@ -39,7 +39,7 @@ class Poll extends ElggObject {
 
 	/**
 	 * Get choice objects
-	 * 
+	 *
 	 * @return ElggObject[] $choices
 	 */
 	public function getChoices() {
@@ -51,11 +51,20 @@ class Poll extends ElggObject {
 				'direction' => 'ASC'
 			),
 		));
-		
+
 		if (!$choices) {
 			$choices = array();
 		}
-		
+
 		return $choices;
+	}
+
+	/**
+	 * Delete all choices associated with this poll
+	 */
+	public function deleteChoices() {
+		foreach ($this->getChoices() as $choice) {
+			$choice->delete();
+		}
 	}
 }
