@@ -95,7 +95,7 @@ $poll->question = $question;
 $poll->title = $question;
 $poll->description = $description;
 $poll->open_poll = $open_poll ? 1 : 0;
-$poll->close_date = $close_date;
+$poll->close_date = empty($close_date) ? null : $close_date;
 $poll->tags = string_to_tag_array($tags);
 
 if (!$poll->save()) {
