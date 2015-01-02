@@ -95,4 +95,23 @@ class Poll extends ElggObject {
 			$i += 1;
 		}
 	}
+
+	/**
+	 * Is the poll open for new votes?
+	 *
+	 * @return boolean
+	 */
+	public function isOpen() {
+		if (empty($this->close_date)) {
+			// There is no closing date so this poll is always open
+			return true;
+		}
+
+		$now = time();
+
+		// input/date saves beginning of day and we want to include closing date day in poll
+		$deadline = $this->close_date + 86400;
+
+		return $deadline < $now;
+	}
 }
