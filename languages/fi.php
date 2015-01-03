@@ -20,6 +20,7 @@ return array(
 	'poll:question' => "Kyselyn nimi",
 	'poll:description' => "Kuvaus",
 	'poll:responses' => "Vastausvaihtoehdot",
+	'poll:result:label' => "%s (%s)",
 	'poll:show_results' => "Näytä tulokset",
 	'poll:show_poll' => "Näytä kysely",
 	'poll:add_choice' => "Lisää uusi vaihtoehto",
@@ -117,7 +118,7 @@ Vastaa kyselyyn täällä: %s
 	'poll:edited' => "Kysely tallennettu",
 	'poll:responded' => "Ääni tallennettu. Kiitos vastauksestasi.",
 	'poll:deleted' => "Kysely poistettu",
-	'poll:totalvotes' => "Vastausten kokonaismäärä: ",
+	'poll:totalvotes' => "Vastausten kokonaismäärä: %s",
 	'poll:voted' => "Ääni tallennettu. Kiitos vastauksestasi.",
 
 	/**

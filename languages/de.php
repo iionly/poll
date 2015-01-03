@@ -20,6 +20,7 @@ return array(
 	'poll:question' => "Frage",
 	'poll:description' => "Beschreibung (optional)",
 	'poll:responses' => "Auswahlmöglichkeiten",
+	'poll:result:label' => "%s (%s)",
 	'poll:show_results' => "Zeige die Ergebnisse",
 	'poll:show_poll' => "Zeige die Umfrage",
 	'poll:add_choice' => "Auswahlmöglichkeit hinzufügen",
@@ -122,7 +123,7 @@ Schau Dir die Umfrage an und gib Deine Stimme ab:
 	'poll:edited' => "Deine Änderungen wurden gespeichert.",
 	'poll:responded' => "Danke fürs Abstimmen. Deine Stimme wurde erfasst.",
 	'poll:deleted' => "Die Umfrage wurde gelöscht.",
-	'poll:totalvotes' => "Gesamtzahl der abgegebenen Stimmen: ",
+	'poll:totalvotes' => "Gesamtzahl der abgegebenen Stimmen: %s",
 	'poll:voted' => "Deine Stimme wurde erfasst. Danke für die Beteiligung in dieser Umfrage.",
 
 	/**
