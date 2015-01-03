@@ -31,9 +31,9 @@ if (isset($vars['entity'])) {
 		$friendly_time = $date_day . '. ' . elgg_echo("poll:month:$date_month") . ' ' . $date_year;
 
 		if ($poll->isOpen()) {
-			$poll_state = 'closed';
-		} else {
 			$poll_state = 'open';
+		} else {
+			$poll_state = 'closed';
 		}
 		$closing_date .= "<div class='poll_closing-date-{$poll_state}'><b>" . elgg_echo('poll:poll_closing_date', array($friendly_time)) . '</b></div>';
 	}

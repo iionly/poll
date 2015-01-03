@@ -112,6 +112,6 @@ class Poll extends ElggObject {
 		// input/date saves beginning of day and we want to include closing date day in poll
 		$deadline = $this->close_date + 86400;
 
-		return $deadline < $now;
+		return $deadline > $now;
 	}
 }
