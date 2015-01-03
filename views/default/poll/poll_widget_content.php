@@ -18,14 +18,9 @@ if (elgg_is_logged_in()) {
 		$show_text = elgg_echo('poll:show_poll');
 		$voted_text = elgg_echo("poll:voted");
 	} else {
-
 		$allow_close_date = elgg_get_plugin_setting('allow_close_date','poll');
 
-		// check if poll has a closing date and if that's the case check if voting is still allowed
-		$today = date("Y/m/d");
-		$end_of_day_close_date = $poll->close_date + 86400; // input/date saves beginning of day and we want to include closing date day in poll
-		$deadline = date("Y", $end_of_day_close_date).'/'.date("m", $end_of_day_close_date).'/'.date("d", $end_of_day_close_date);
-		if (($allow_close_date == 'yes') && (isset($poll->close_date)) && (strtotime($deadline)-strtotime($today)) <= 0) {
+		if ($allow_close_date == 'yes' && !$poll->isOpen()) {
 			$results_display = "block";
 			$poll_display = "none";
 			$show_text = elgg_echo('poll:show_poll');

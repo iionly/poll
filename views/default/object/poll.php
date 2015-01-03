@@ -30,11 +30,8 @@ if (isset($vars['entity'])) {
 		$date_year = gmdate('Y', $poll->close_date);
 		$friendly_time = $date_day . '. ' . elgg_echo("poll:month:$date_month") . ' ' . $date_year;
 
-		if ($poll->isOpen()) {
-			$poll_state = 'open';
-		} else {
-			$poll_state = 'closed';
-		}
+		$poll_state = $poll->isOpen() ? 'open' : 'closed';
+
 		$closing_date .= "<div class='poll_closing-date-{$poll_state}'><b>" . elgg_echo('poll:poll_closing_date', array($friendly_time)) . '</b></div>';
 	}
 

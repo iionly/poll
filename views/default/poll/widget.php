@@ -27,14 +27,8 @@ if (($allow_close_date == 'yes') && (isset($poll->close_date))) {
 	$date_year = gmdate('Y', $poll->close_date);
 	$friendly_time = $date_day . '. ' . elgg_echo("poll:month:$date_month") . ' ' . $date_year;
 
-	$today = date("Y/m/d");
-	$end_of_day_close_date = $poll->close_date + 86400; // input/date saves beginning of day and we want to include closing date day in poll
-	$deadline = date("Y", $end_of_day_close_date).'/'.date("m", $end_of_day_close_date).'/'.date("d", $end_of_day_close_date);
-	if ((strtotime($deadline)-strtotime($today)) <= 0) {
-		$poll_state = 'closed';
-	} else {
-		$poll_state = 'open';
-	}
+	$poll_state = $poll->isOpen() ? 'open' : 'closed';
+
 	$closing_date = "<div class='poll_closing-date-{$poll_state}'><b>" . elgg_echo('poll:poll_closing_date', array($friendly_time)) . '</b></div>';
 }
 
