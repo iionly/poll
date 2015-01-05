@@ -24,22 +24,15 @@
 .poll_input-poll-choice {
 	width: 90%;
 }
-.poll_progress_indicator {
-	width:200px;
-	padding: 5px;
+.poll-result {
+	margin: 15px 0;
 }
-.poll_progressBarContainer {
-	height:12px;
-	width:100%;
-	border: 1px #00B0E4 solid;
-	padding: 0;
-	margin: 0;
-}
-.poll_progressBarContainer img {
+.poll-progress {
 	height: 12px;
-	vertical-align: top;
+	border: 1px #00B0E4 solid;
+	margin: 5px 0;
 }
-.poll_filled-bar {
+.poll-progress-filled {
 	background-color: #00B0E4;
 	height: 12px;
 }
@@ -51,9 +44,6 @@
 }
 .poll_closing-date-closed {
 	color: red;
-}
-.poll_users-voted {
-	padding: 0px 5px;
 }
 .poll_vote-label {
 	cursor: pointer;

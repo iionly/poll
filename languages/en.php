@@ -20,6 +20,7 @@ return array(
 	'poll:question' => "Poll question",
 	'poll:description' => "Description (optional)",
 	'poll:responses' => "Vote choices",
+	'poll:result:label' => "%s (%s)",
 	'poll:show_results' => "Show results",
 	'poll:show_poll' => "Show poll",
 	'poll:add_choice' => "Add vote choice",
@@ -122,7 +123,7 @@ View and vote on the poll:
 	'poll:edited' => "Your poll was saved.",
 	'poll:responded' => "Thank you for responding, your vote was recorded.",
 	'poll:deleted' => "Your poll was successfully deleted.",
-	'poll:totalvotes' => "Total number of votes: ",
+	'poll:totalvotes' => "Total number of votes: %s",
 	'poll:voted' => "Your vote has been cast for this poll. Thank you for voting on this poll.",
 
 	/**

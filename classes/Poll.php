@@ -6,6 +6,16 @@ class Poll extends ElggObject {
 	const SUBTYPE = "poll";
 
 	/**
+	 * @var array $responses Cache for number of responses for each voting choice
+	 */
+	private $responses_by_choice = array();
+
+	/**
+	 * @var int $response_count Total amount of responses
+	 */
+	private $response_count = 0;
+
+	/**
 	 * Set subtype
 	 */
 	protected function initializeAttributes() {
@@ -113,5 +123,68 @@ class Poll extends ElggObject {
 		$deadline = $this->close_date + 86400;
 
 		return $deadline > $now;
+	}
+
+	/**
+	 * Fetch and cache amount of responses for each choice
+	 *
+	 * Caches the data in form:
+	 *     array(
+	 *         'choice 1' => 5,
+	 *         'choice 2' => 13,
+	 *         'choice 3' => 2,
+	 *     )
+	 */
+	private function fetchResponses() {
+		if ($this->responses_by_choice) {
+			return;
+		}
+
+		// Make sure choices without responses are included in the result
+		foreach ($this->getChoices() as $choice) {
+			$this->responses_by_choice[$choice->text] = 0;
+		}
+
+		// Get responses
+		$responses = new ElggBatch('elgg_get_annotations', array(
+			'guid' => $this->guid,
+			'annotation_name' => 'vote',
+			'limit' => false,
+		));
+
+		// Cache the amount of results for each choice
+		foreach ($responses as $response) {
+			$this->responses_by_choice[$response->value] += 1;
+		}
+
+		// Cache the total amount of responses
+		$this->response_count = array_sum($this->responses_by_choice);
+	}
+
+	/**
+	 * Get amount of responses for the given choice
+	 *
+	 * @param string $choice
+	 * @return int Response count
+	 */
+	public function getResponseCountForChoice(string $choice) {
+		// Make sure the values have been populated
+		$this->fetchResponses();
+
+		return $this->responses_by_choice[$choice];
+	}
+
+	/**
+	 * Get total amount of responses
+	 *
+	 * @todo Save the total amount as poll metadata in the voting action
+	 *
+	 * @return int
+	 */
+	public function getResponseCount() {
+		// Make sure the values have been populated
+		$this->fetchResponses();
+
+		return $this->response_count;
 	}
 }
