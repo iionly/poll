@@ -94,6 +94,9 @@ function poll_init() {
  */
 function poll_page_handler($page) {
 	elgg_load_library('elgg:poll');
+
+	elgg_push_breadcrumb(elgg_echo('item:object:poll'), "poll/all");
+
 	$page_type = $page[0];
 	switch($page_type) {
 		case "view":

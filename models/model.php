@@ -65,9 +65,6 @@ function poll_get_page_edit($page_type, $guid = 0) {
 				$content = elgg_echo('poll:permission_error');
 			}
 
-			// set breadcrumb
-			elgg_push_breadcrumb(elgg_echo('item:object:poll'), 'poll/all');
-
 			$container = get_entity($container_guid);
 			if (elgg_instanceof($container, 'group')) {
 				elgg_push_breadcrumb($container->name, 'poll/group/' . $container->getGUID());
@@ -80,8 +77,6 @@ function poll_get_page_edit($page_type, $guid = 0) {
 			$content = elgg_echo('poll:no_such_poll');
 		}
 	} else {
-		// set breadcrumb
-		elgg_push_breadcrumb(elgg_echo('item:object:poll'), 'poll/all');
 		if ($guid) {
 			elgg_set_page_owner_guid($guid);
 			$container = get_entity($guid);
@@ -164,9 +159,6 @@ function poll_get_page_list($page_type, $container_guid = null) {
 		'full_view' => false,
 		'limit' => 15
 	);
-
-	// set breadcrumb
-	elgg_push_breadcrumb(elgg_echo('item:object:poll'), 'poll/all');
 
 	if ($page_type == 'group') {
 		$group = get_entity($container_guid);
@@ -276,7 +268,6 @@ function poll_get_page_view($guid) {
 			$content .= elgg_view_comments($poll);
 		}
 
-		elgg_push_breadcrumb(elgg_echo('item:object:poll'), "poll/all");
 		if (elgg_instanceof($page_owner,'user')) {
 			elgg_push_breadcrumb($page_owner->name, "poll/owner/{$page_owner->username}");
 		} else {
@@ -287,7 +278,6 @@ function poll_get_page_view($guid) {
 		// Display the 'post not found' page instead
 		$title = elgg_echo("poll:notfound");
 		$content = elgg_view("poll/notfound");
-		elgg_push_breadcrumb(elgg_echo('item:object:poll'), "poll/all");
 		elgg_push_breadcrumb($title);
 	}
 
