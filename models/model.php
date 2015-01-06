@@ -288,20 +288,6 @@ function poll_get_page_view($guid) {
 	return elgg_view_page($title, $body);
 }
 
-function poll_get_response_count($valueToCount, $fromArray) {
-	$count = 0;
-
-	if(is_array($fromArray)) {
-		foreach($fromArray as $item) {
-			if($item->value == $valueToCount) {
-				$count += 1;
-			}
-		}
-	}
-
-	return $count;
-}
-
 function poll_manage_front_page($poll, $front_page) {
 	$poll_front_page = elgg_get_plugin_setting('front_page','poll');
 	if(elgg_is_admin_logged_in() && ($poll_front_page == 'yes')) {
