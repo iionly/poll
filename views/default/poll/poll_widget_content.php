@@ -53,9 +53,12 @@ if (elgg_is_logged_in()) {
 <?php echo elgg_view_form('poll/vote', array('id' => 'poll-vote-form-'.$poll->guid), array('entity' => $poll, 'callback' => 1, 'form_display' => $poll_display));
 
 if ($can_vote) {
-?>
+	$toggle = elgg_view('output/url', array(
+		'text' => $show_text,
+		'href' => '',
+		'data-guid' => $poll->guid,
+		'class' => 'poll-show-link',
+	));
 
-	<!-- show display toggle -->
-	<p align="center"><a href="javascript:void(0);" rel="<?php echo $poll->guid; ?>" class="poll-show-link"><?php echo $show_text; ?></a></p>
-<?php
+	echo "<p class=\"center\">$toggle</p>";
 }

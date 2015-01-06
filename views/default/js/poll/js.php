@@ -2,6 +2,7 @@ elgg.provide('elgg.poll');
 
 elgg.poll.init = function() {
 	$('.poll-show-link').live('click',elgg.poll.toggleResults);
+
 	$('.poll-vote-button').live('click',function(e) {
 		var guid = $(this).attr("rel");
 
@@ -19,17 +20,19 @@ elgg.poll.init = function() {
 	});
 };
 
-elgg.poll.toggleResults = function() {
-	var guid = $(this).attr("rel");
+elgg.poll.toggleResults = function(e) {
+	var guid = $(this).data('guid');
+
 	if ($("#poll-vote-form-container-"+guid).is(":visible")) {
-		$("#poll-vote-form-container-"+guid).hide();
-		$("#poll-post-body-"+guid).show();
-		$(this).html("<?php echo elgg_echo('poll:show_poll'); ?>");
+		$(this).html(elgg.echo('poll:show_poll'));
 	} else {
-		$("#poll-vote-form-container-"+guid).show();
-		$("#poll-post-body-"+guid).hide();
-		$(this).html("<?php echo elgg_echo('poll:show_results'); ?>");
+		$(this).html(elgg.echo('poll:show_results'));
 	}
+
+	$("#poll-vote-form-container-" + guid).toggle();
+	$("#poll-post-body-" + guid).toggle();
+
+	e.preventDefault();
 }
 
 elgg.register_hook_handler('init', 'system', elgg.poll.init);
