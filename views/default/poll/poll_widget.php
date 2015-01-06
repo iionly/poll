@@ -7,7 +7,7 @@
  * @uses $vars['entity'] Optionally, the poll post to view
 */
 
-elgg_load_js('elgg.poll');
+elgg_require_js('elgg/poll/poll');
 
 $allow_close_date = elgg_get_plugin_setting('allow_close_date','poll');
 $poll = $vars['entity'];

@@ -40,11 +40,6 @@ function poll_init() {
 	// Register entity type
 	elgg_register_entity_type('object','poll');
 
-	// register the JavaScript
-	$js = elgg_get_simplecache_url('js', 'poll/js');
-	elgg_register_simplecache_view('js/poll/js');
-	elgg_register_js('elgg.poll', $js);
-
 	// add group widget
 	$group_poll = elgg_get_plugin_setting('group_poll', 'poll');
 	if (!$group_poll || $group_poll != 'no') {

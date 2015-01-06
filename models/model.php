@@ -255,7 +255,8 @@ function poll_get_page_list($page_type, $container_guid = null) {
 }
 
 function poll_get_page_view($guid) {
-	elgg_load_js('elgg.poll');
+	elgg_require_js('elgg/poll/poll');
+
 	$poll = get_entity($guid);
 	if ($poll instanceof Poll) {
 		// Set the page owner

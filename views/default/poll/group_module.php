@@ -10,7 +10,7 @@
  */
 
 elgg_load_library('elgg:poll');
-elgg_load_js('elgg.poll');
+elgg_require_js('elgg/poll/poll');
 
 $group = elgg_get_page_owner_entity();
 
