@@ -36,13 +36,13 @@ define(function(require) {
 	toggleResults = function(e) {
 		var guid = $(this).data('guid');
 
-		if ($("#poll-vote-form-container-" + guid).is(":visible")) {
+		if ($("#poll-vote-form-" + guid).is(":visible")) {
 			$(this).html(elgg.echo('poll:show_poll'));
 		} else {
 			$(this).html(elgg.echo('poll:show_results'));
 		}
 
-		$("#poll-vote-form-container-" + guid).toggle();
+		$("#poll-vote-form-" + guid).toggle();
 		$("#poll-post-body-" + guid).toggle();
 
 		e.preventDefault();

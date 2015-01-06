@@ -14,7 +14,6 @@ if (elgg_is_logged_in()) {
 	//if user has voted, show the results
 	if (!$can_vote) {
 		$results_display = "block";
-		$poll_display = "none";
 		$show_text = elgg_echo('poll:show_poll');
 		$voted_text = elgg_echo("poll:voted");
 	} else {
@@ -22,7 +21,6 @@ if (elgg_is_logged_in()) {
 
 		if ($allow_close_date == 'yes' && !$poll->isOpen()) {
 			$results_display = "block";
-			$poll_display = "none";
 			$show_text = elgg_echo('poll:show_poll');
 			$date_day = date('j', $poll->close_date);
 			$date_month = date('m', $poll->close_date);
@@ -32,13 +30,11 @@ if (elgg_is_logged_in()) {
 			$can_vote = false;
 		} else {
 			$results_display = "none";
-			$poll_display = "block";
 			$show_text = elgg_echo('poll:show_results');
 		}
 	}
 } else {
 	$results_display = "block";
-	$poll_display = "none";
 	$show_text = elgg_echo('poll:show_poll');
 	$voted_text = elgg_echo('poll:login');
 	$can_vote = false;
@@ -50,9 +46,11 @@ if (elgg_is_logged_in()) {
 	<?php echo elgg_view('poll/results_for_widget', array('entity' => $poll)); ?>
 </div>
 
-<?php echo elgg_view_form('poll/vote', array('id' => 'poll-vote-form-'.$poll->guid), array('entity' => $poll, 'callback' => 1, 'form_display' => $poll_display));
+<?php
 
 if ($can_vote) {
+	echo elgg_view_form('poll/vote', array('id' => "poll-vote-form-{$poll->guid}"), array('entity' => $poll, 'callback' => 1));
+
 	$toggle = elgg_view('output/url', array(
 		'text' => $show_text,
 		'href' => '',
