@@ -22,16 +22,10 @@ if (empty($response)) {
 	forward(REFERER);
 }
 
-$user_guid = elgg_get_logged_in_user_guid();
+$user = elgg_get_logged_in_user_entity();
 
-// check to see if this user has already voted
-$vote = elgg_get_annotations(array(
-	'annotation_name' => 'vote',
-	'annotation_owner_guid' => $user_guid,
-	'guid' => $guid
-));
-
-if ($vote) {
+// Check if user has already voted
+if ($poll->hasVoted($user)) {
 	register_error(elgg_echo('poll:alreadyvoted'));
 	forward(REFERER);
 }
@@ -45,7 +39,7 @@ if ($poll_vote_in_river != 'no') {
 	elgg_create_river_item(array(
 		'view' => 'river/object/poll/vote',
 		'action_type' => 'vote',
-		'subject_guid' => $user_guid,
+		'subject_guid' => $user->guid,
 		'object_guid' => $poll->guid,
 	));
 }
