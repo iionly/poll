@@ -44,6 +44,7 @@ return array(
 	'poll:settings:allow_close_date:title' => "Allow setting a closing date for polls? (afterwards the results can still be viewed but voting is no longer permitted)",
 	'poll:settings:allow_open_poll:title' => "Allow open polls? (open polls show which user voted for which poll choice; if this option is enabled, admins can see who voted what on any polls)",
 	'poll:none' => "No polls found.",
+	'poll:not_found' => "The poll was not found",
 	'poll:permission_error' => "You do not have permission to edit this poll.",
 	'poll:vote' => "Vote",
 	'poll:login' => "Please login if you would like to vote in this poll.",

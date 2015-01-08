@@ -44,6 +44,7 @@ return array(
 	'poll:settings:allow_close_date:title' => "Befristete Umfragen erlauben? (nach Ablauf der Frist sind die Ergebnisse der Umfrage weiterhin sichtbar aber eine Stimmabgabe ist nicht mehr möglich)",
 	'poll:settings:allow_open_poll:title' => "Offene Umfragen erlauben? (Bei offenen Umfragen ist sichtbar, welche Mitglieder welche Antwort gewählt haben; wenn diese Option aktiviert ist, können Admins bei allen Umfragen sehen, wer wie gewählt hat)",
 	'poll:none' => "Keine Umfragen gefunden.",
+	'poll:not_found' => "The poll was not found",
 	'poll:permission_error' => "Du hast keine ausreichende Berechtigung, um diese Umfrage zu bearbeiten.",
 	'poll:vote' => "Abstimmen",
 	'poll:login' => "Bitte melde Dich auf der Community-Seite an, wenn Du in dieser Umfrage Deine Stimme abgeben willst.",

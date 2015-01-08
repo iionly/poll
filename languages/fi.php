@@ -44,6 +44,7 @@ return array(
 	'poll:settings:allow_close_date:title' => "Ota käyttöön kyselyn sulkeutumispäivä?",
 	'poll:settings:allow_open_poll:title' => "Ota käyttöön avoimet kyselyt? (Näyttää vastausten kohdalla niihin vastanneet henkilöt)",
 	'poll:none' => "Ei kyselyitä",
+	'poll:not_found' => "Kyselyä ei löytynyt",
 	'poll:permission_error' => "Sinulla ei ole oikeuksia tämän kyselyn muokkaamiseen",
 	'poll:vote' => "Vastaa",
 	'poll:login' => "Kirjaudu sisään vastataksesi tähän kyselyyn",
