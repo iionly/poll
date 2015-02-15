@@ -1,9 +1,9 @@
 Poll plugin for Elgg 1.9
-Latest Version: 1.9.1.1
-Released: 2014-09-26
+Latest Version: 1.9.2
+Released: 2015-02-15
 Contact: iionly@gmx.de
 License: GNU General Public License version 2
-Copyright: (C) iionly, (C) Kevin Jardine, (C) John Mellberg and Dr Sanu P Moideen
+Copyright: (c) iionly, Juho Jaakkola, Kevin Jardine, John Mellberg and Dr Sanu P Moideen
 
 
 This plugin allows adding of polls (both site-wide polls and optionally also group-specific polls). The number of choices to vote on is free to choose for each poll. Optionally, a (longer) description can be added to a poll. An admin can also (optionally) make a single poll the site's current featured poll. The widgets included are a "My polls" widget that shows a user's polls on his profile page and/or dashboard, a "Latest community polls" widget for the dashboard (and if the Widget Manager plugin is available also on the index page), a group's polls widget for group profile pages and the "Featured poll" widget showing the site's current featured poll on the dashboard (and if the Widget Manager plugin is available also on the index page). Notification on creation of new polls is optional (admin setting) and the creation of river entries for new polls and voting on polls can also be enabled/disabled in the plugin settings.
@@ -24,6 +24,12 @@ Installation:
 
 
 Changelog:
+
+1.9.2 (thanks to Juho Jaakkola!!!):
+
+- Major cleanup / simplification / restructuring / updating / move to more object oriented code,
+- Conversion of javascript code into an AMD module,
+- Finnish translations added.
 
 1.9.1.1:
 
