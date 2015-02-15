@@ -20,7 +20,7 @@ if ($allow_open_poll) {
 $vote_id = 0;
 
 foreach ($choices as $choice) {
-	$response_count = $poll->getResponseCountForChoice($choice);
+	$response_count = $poll->getResponseCountForChoice((string)$choice);
 
 	$response_label = elgg_echo ('poll:result:label', array($choice, $response_count));
 

@@ -167,7 +167,7 @@ class Poll extends ElggObject {
 	 * @param string $choice
 	 * @return int Response count
 	 */
-	public function getResponseCountForChoice(string $choice) {
+	public function getResponseCountForChoice($choice) {
 		// Make sure the values have been populated
 		$this->fetchResponses();
 
