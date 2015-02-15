@@ -20,7 +20,7 @@ $body = '';
 
 if ($old_polls_count > 0) {
 	$body .= elgg_echo('poll:convert:description', array($old_polls_count))."<br><br>";
-	$body .= elgg_view("output/confirmlink", array(
+	$body .= elgg_view("output/url", array(
 		'href' => elgg_get_site_url() . "action/poll/convert",
 		'text' => elgg_echo('poll:convert'),
 		'confirm' => elgg_echo('poll:convert:confirm'),
