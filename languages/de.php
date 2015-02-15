@@ -44,7 +44,7 @@ return array(
 	'poll:settings:allow_close_date:title' => "Befristete Umfragen erlauben? (nach Ablauf der Frist sind die Ergebnisse der Umfrage weiterhin sichtbar aber eine Stimmabgabe ist nicht mehr möglich)",
 	'poll:settings:allow_open_poll:title' => "Offene Umfragen erlauben? (Bei offenen Umfragen ist sichtbar, welche Mitglieder welche Antwort gewählt haben; wenn diese Option aktiviert ist, können Admins bei allen Umfragen sehen, wer wie gewählt hat)",
 	'poll:none' => "Keine Umfragen gefunden.",
-	'poll:not_found' => "The poll was not found",
+	'poll:not_found' => "Diese Umfrage konnte nicht gefunden werden.",
 	'poll:permission_error' => "Du hast keine ausreichende Berechtigung, um diese Umfrage zu bearbeiten.",
 	'poll:vote' => "Abstimmen",
 	'poll:login' => "Bitte melde Dich auf der Community-Seite an, wenn Du in dieser Umfrage Deine Stimme abgeben willst.",
@@ -132,7 +132,7 @@ Schau Dir die Umfrage an und gib Deine Stimme ab:
 	 */
 	'poll:blank' => "Entschuldigung: Du mußt sowohl im Frage-Eingabefeld etwas eintragen und auch mindestens eine Auswahlmöglichkeit für die Umfrage hinzufügen.",
 	'poll:novote' => "Entschuldigung: Du mußt eine der angebotenen Auswahlmöglichkeiten selektieren, wenn Du in dieser Umfrage Deine Stimme abgeben willst.",
-	'poll:alreadyvoted' => "Entschuldigung: Du kannst leider nur einmal abstimmen.",
+	'poll:alreadyvoted' => "Entschuldigung: Du kannst nur einmal abstimmen.",
 	'poll:notfound' => "Entschuldigung: die gewünschte Umfrage konnte nicht gefunden werden.",
 	'poll:notdeleted' => "Entschuldigung: beim Löschen der Umfrage ist ein Fehler aufgetreten."
 );
