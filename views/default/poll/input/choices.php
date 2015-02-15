@@ -44,7 +44,7 @@ $body .= elgg_view('input/button', array(
 	'class' => 'elgg-button elgg-button-action',
 ));
 
-$body .= elgg_view('input/text', array(
+$body .= elgg_view('input/hidden', array(
 	'name' => 'number_of_choices',
 	'id' => 'number-of-choices',
 	'value' => $i,
