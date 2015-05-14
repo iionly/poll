@@ -56,9 +56,11 @@ class Poll extends ElggObject {
 		$choices = $this->getEntitiesFromRelationship(array(
 			'relationship' => 'poll_choice',
 			'inverse_relationship' => true,
+			'limit' => false,
 			'order_by_metadata' => array(
 				'name' => 'display_order',
-				'direction' => 'ASC'
+				'direction' => 'ASC',
+				'as' => integer
 			),
 		));
 

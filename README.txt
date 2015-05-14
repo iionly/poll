@@ -1,6 +1,6 @@
-Poll plugin for Elgg 1.10
-Latest Version: 1.10.2
-Released: 2015-02-15
+Poll plugin for Elgg 1.10+1.11
+Latest Version: 1.10.3
+Released: 2015-05-14
 Contact: iionly@gmx.de
 License: GNU General Public License version 2
 Copyright: (c) iionly, Juho Jaakkola, Kevin Jardine, John Mellberg and Dr Sanu P Moideen
@@ -24,6 +24,24 @@ Installation:
 
 
 Changelog:
+
+1.10.3:
+
+- Updated version 1.9.3 for Elgg 1.9.
+
+1.9.3:
+
+- Updated version 1.8.3 for Elgg 1.9.
+And:
+- Correctly handle polls with more than 10 choices.
+
+1.8.3:
+
+- Fixed: admins can no longer see who voted for which choice if "Allow open polls" plugin setting is set to "No".
+
+1.8.2:
+
+skipped.
 
 1.10.2:
 
