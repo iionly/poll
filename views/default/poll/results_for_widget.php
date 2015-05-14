@@ -11,7 +11,7 @@ $choices = poll_get_choice_array($poll);
 $total = $poll->getResponseCount();
 
 $allow_open_poll = elgg_get_plugin_setting('allow_open_poll', 'poll');
-if ($allow_open_poll) {
+if ($allow_open_poll == 'yes') {
 	$open_poll = ($poll->open_poll == 1);
 } else {
 	$open_poll = false;
@@ -28,7 +28,7 @@ foreach ($choices as $choice) {
 
 	// Show members if this poll is an open poll or if an admin is logged in
 	// (in the latter case open polls must be enabled in plugin settings)
-	if ($open_poll || ($allow_open_poll && elgg_is_admin_logged_in())) {
+	if ($open_poll || (($allow_open_poll == 'yes') && elgg_is_admin_logged_in())) {
 		$vote_id++;
 
 		// TODO Would it be possible to use elgg_list_annotations() with
