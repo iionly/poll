@@ -20,6 +20,7 @@ return array(
 	'poll:question' => "Poll question",
 	'poll:description' => "Description (optional)",
 	'poll:responses' => "Vote choices",
+	'poll:note_responses' => "Note: modifying the poll choices of an existing poll (adding / deleting choices or changing the text of an existing choice) will result in a reset of the votes for the poll to allow all members to re-vote based on the new set of choices.",
 	'poll:result:label' => "%s (%s)",
 	'poll:show_results' => "Show results",
 	'poll:show_poll' => "Show poll",
@@ -114,6 +115,7 @@ View and vote on the poll:
 	'poll:settings:vote_in_river:title' => "Show poll voting in activity river?",
 	'poll:settings:send_notification:title' => "Send notification when a poll is created? (Members will only receive notifications if their are friend with the creator of the poll or a member of the group the poll was added to. Additionally, notifications will only be sent to members who configured Elgg's notification settings accordingly)",
 	'river:create:object:poll' => '%s created a poll %s',
+	'river:update:object:poll' => '%s updated a poll %s',
 	'river:vote:object:poll' => '%s voted on the poll %s',
 	'river:comment:object:poll' => '%s commented on the poll %s',
 

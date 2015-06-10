@@ -33,6 +33,7 @@ if (elgg_instanceof($page_owner, 'group')) {
 <div>
 	<label><?php echo elgg_echo('poll:responses'); ?></label>
 	<?php echo elgg_view('poll/input/choices', array('poll' => $poll)); ?>
+	<?php echo elgg_view("output/longtext", array("value" => elgg_echo('poll:note_responses'), 'class' => 'elgg-subtext mts')); ?>
 </div>
 
 <?php
