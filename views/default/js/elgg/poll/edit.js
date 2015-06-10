@@ -11,9 +11,9 @@ define(function(require) {
 	/**
 	 * Initialize the poll editing javascript
 	 */
-	init = function() {
-		$('#add-choice').live('click', addChoice);
-		$('.delete-choice').live('click', deleteChoice);
+	function init() {
+		$('#add-choice').on('click', addChoice);
+		$('#new-choices-area').on('click', '.delete-choice', deleteChoice);
 
 		cnum = parseInt($('#number-of-choices').val());
 
@@ -58,5 +58,5 @@ define(function(require) {
 		e.preventDefault();
 	}
 
-	elgg.register_hook_handler('init', 'system', init);
+	init();
 });
