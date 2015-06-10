@@ -16,6 +16,11 @@ define(function(require) {
 		$('.delete-choice').live('click', deleteChoice);
 
 		cnum = parseInt($('#number-of-choices').val());
+
+		$('#poll_edit_cancel').on('click', function() {
+			var forward = $(this).data('forward');
+			window.location.href = elgg.get_site_url() + forward;
+		});
 	};
 
 	/**

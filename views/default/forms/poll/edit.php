@@ -10,6 +10,14 @@ $question = $vars['fd']['question'];
 $description = $vars['fd']['description'];
 $tags = $vars['fd']['tags'];
 $access_id = $vars['fd']['access_id'];
+
+$page_owner = elgg_get_page_owner_entity();
+if (elgg_instanceof($page_owner, 'group')) {
+	$cancel_forward = "poll/group/" . $page_owner->getGUID() . "/all";
+} else {
+	$cancel_forward = "poll/owner/" . $page_owner->username;
+}
+
 ?>
 
 <div>
@@ -95,7 +103,7 @@ if (isset($vars['entity'])) {
 $entity_hidden .= elgg_view('input/hidden', array('name' => 'container_guid', 'value' => elgg_get_page_owner_guid()));
 
 $submit_input = elgg_view('input/submit', array('name' => 'submit', 'class' => 'elgg-button elgg-button-submit', 'value' => elgg_echo('save')));
-$submit_input .= ' '.elgg_view('input/button', array('name' => 'cancel', 'id' => 'poll_edit_cancel', 'type'=> 'button', 'class' => 'elgg-button elgg-button-cancel', 'value' => elgg_echo('cancel')));
+$submit_input .= ' '.elgg_view('input/button', array('name' => 'cancel', 'id' => 'poll_edit_cancel', 'type'=> 'button', 'class' => 'elgg-button elgg-button-cancel', 'value' => elgg_echo('cancel'), 'data-forward' => $cancel_forward));
 
 ?>
 
@@ -105,11 +113,3 @@ echo $entity_hidden;
 echo $submit_input;
 ?>
 </div>
-
-<script type="text/javascript">
-$('#poll_edit_cancel').click(
-	function() {
-		window.location.href="<?php echo elgg_get_site_url().'poll/owner/'.(elgg_get_page_owner_entity()->username); ?>";
-	}
-);
-</script>
