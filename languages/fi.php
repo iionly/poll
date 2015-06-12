@@ -20,6 +20,7 @@ return array(
 	'poll:question' => "Kyselyn nimi",
 	'poll:description' => "Kuvaus",
 	'poll:responses' => "Vastausvaihtoehdot",
+	'poll:note_responses' => "HUOM! Vaihtoehtojen muokkaaminen jälkikäteen poistaa kaikki kyselyyn tulleet vastaukset.",
 	'poll:result:label' => "%s (%s)",
 	'poll:show_results' => "Näytä tulokset",
 	'poll:show_poll' => "Näytä kysely",
@@ -109,6 +110,7 @@ Vastaa kyselyyn täällä: %s
 	'poll:settings:vote_in_river:title' => "Näytä yksittäiset äänet toimintalistauksessa?",
 	'poll:settings:send_notification:title' => "Lähetä ilmoitukset uusista kyselyistä?",
 	'river:create:object:poll' => '%s loi kyselyn %s',
+	'river:update:object:poll' => '%s päivitti kyselyn %s',
 	'river:vote:object:poll' => '%s vastasi kyselyyn %s',
 	'river:comment:object:poll' => '%s kommentoi kyselyä %s',
 
