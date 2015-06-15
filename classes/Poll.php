@@ -113,6 +113,9 @@ class Poll extends ElggObject {
 
 		$this->deleteChoices();
 
+		// Ignore access (necessary in case a group admin is editing the poll of another group member)
+		$ia = elgg_set_ignore_access(true);
+
 		$i = 0;
 		foreach ($choices as $choice) {
 			$poll_choice = new ElggObject();
@@ -127,6 +130,8 @@ class Poll extends ElggObject {
 			add_entity_relationship($poll_choice->guid, 'poll_choice', $this->guid);
 			$i += 1;
 		}
+
+		elgg_set_ignore_access($ia);
 	}
 	
 	/**
