@@ -20,6 +20,7 @@ return array(
 	'poll:question' => "Frage",
 	'poll:description' => "Beschreibung (optional)",
 	'poll:responses' => "Auswahlmöglichkeiten",
+	'poll:note_responses' => "Anmerkung: bei Änderung der Auswahlmöglichkeiten einer existierenden Umfrage (Hinzufügen / Löschen von Auswahlmöglichkeiten oder einer Änderung des Textes einer bestehenden Auswahlmöglichkeit) werden die bereits abgegebenen Stimmen vollständig zurückgesetzt, damit alle Mitglieder die Möglichkeit haben, ihre Stimme basierend auf den aktualisierten Auswahlmöglichkeiten der Umfrage abzugeben.",
 	'poll:result:label' => "%s (%s)",
 	'poll:show_results' => "Zeige die Ergebnisse",
 	'poll:show_poll' => "Zeige die Umfrage",
@@ -114,6 +115,7 @@ Schau Dir die Umfrage an und gib Deine Stimme ab:
 	'poll:settings:vote_in_river:title' => "Einen Eintrag im Aktivitäten-River erzeugen, wenn ein Mitglied seine Stimme in einer Umfrage abgegeben hat?",
 	'poll:settings:send_notification:title' => "Beim Hinzufügen einer Umfrage Benachrichtigungen versenden? (Mitglieder erhalten nur Benachrichtigungen, wenn sie entweder mit dem Mitglied befreundet sind, der die Umfrage gestartet hat oder Mitglied der Gruppe sind, zu der die Umfrage hinzugefügt wurde. Darüber hinaus müssen sie die Benachrichtigungseinstellungen von Elgg entsprechend konfiguriert haben)",
 	'river:create:object:poll' => '%s hat die Umfrage %s gestartet',
+	'river:update:object:poll' => '%s hat die Umfrage %s aktualisiert',
 	'river:vote:object:poll' => '%s hat in der Umfrage %s abgestimmt',
 	'river:comment:object:poll' => '%s schrieb einen Kommentar zur Umfrage %s',
 

@@ -11,11 +11,16 @@ define(function(require) {
 	/**
 	 * Initialize the poll editing javascript
 	 */
-	init = function() {
-		$('#add-choice').live('click', addChoice);
-		$('.delete-choice').live('click', deleteChoice);
+	function init() {
+		$('#add-choice').on('click', addChoice);
+		$('#new-choices-area').on('click', '.delete-choice', deleteChoice);
 
 		cnum = parseInt($('#number-of-choices').val());
+
+		$('#poll_edit_cancel').on('click', function() {
+			var forward = $(this).data('forward');
+			window.location.href = elgg.get_site_url() + forward;
+		});
 	};
 
 	/**
@@ -53,5 +58,5 @@ define(function(require) {
 		e.preventDefault();
 	}
 
-	elgg.register_hook_handler('init', 'system', init);
+	init();
 });

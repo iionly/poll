@@ -81,7 +81,28 @@ class Poll extends ElggObject {
 	}
 
 	/**
-	 * Adds or updates poll choices
+	 * Delete all votes associated with this poll, reset vote counters and delete associated vote river items
+	 */
+	public function deleteVotes() {
+		elgg_delete_river(array(
+			'view' => 'river/object/poll/vote',
+			'action_type' => 'vote',
+			'object_guid' => $this->guid,
+		));
+
+		elgg_delete_annotations(array(
+			'guid' => $this->guid,
+			'type' => "object",
+			'subtype' => "poll",
+			'annotation_name' => "vote",
+		));
+
+		$this->responses_by_choice = array();
+		$this->response_count = 0;
+	}
+
+	/**
+	 * Adds poll choices
 	 *
 	 * @param array $choices
 	 */
@@ -91,6 +112,9 @@ class Poll extends ElggObject {
 		}
 
 		$this->deleteChoices();
+
+		// Ignore access (necessary in case a group admin is editing the poll of another group member)
+		$ia = elgg_set_ignore_access(true);
 
 		$i = 0;
 		foreach ($choices as $choice) {
@@ -105,6 +129,40 @@ class Poll extends ElggObject {
 
 			add_entity_relationship($poll_choice->guid, 'poll_choice', $this->guid);
 			$i += 1;
+		}
+
+		elgg_set_ignore_access($ia);
+	}
+	
+	/**
+	 * Check for changes in poll choices on editing of a poll and update choices if necessary
+	 * If an update is necessary the existing votes get deleted and the vote counters get reset
+	 *
+	 * @param array $choices
+	 */
+	public function updateChoices(array $choices) {
+		if (empty($choices)) {
+			return false;
+		}
+
+		$choices_changed = false;
+		$old_choices = $this->getChoices();
+
+		if (count($choices) != count($old_choices)) {
+			$choices_changed = true;
+		} else {
+			$i = 0;
+			foreach ($old_choices as $old_choice) {
+				if ($old_choice->text != $choices[$i]) {
+					$choices_changed = true;
+				}
+				$i += 1;
+			}
+		}
+
+		if ($choices_changed) {
+			$this->deleteVotes();
+			$this->setChoices($choices);
 		}
 	}
 

@@ -103,19 +103,37 @@ if (!$poll->save()) {
 	forward(REFERER);
 }
 
-$poll->setChoices($new_choices);
+if ($new) {
+	$poll->setChoices($new_choices);
+} else {
+	$poll->updateChoices($new_choices);
+}
 
 poll_manage_front_page($poll, $front_page);
 
 elgg_clear_sticky_form('poll');
 
-if ($new) {
-	$poll_create_in_river = elgg_get_plugin_setting('create_in_river', 'poll');
-
-	if ($poll_create_in_river != 'no') {
+$poll_create_in_river = elgg_get_plugin_setting('create_in_river', 'poll');
+if ($poll_create_in_river != 'no') {
+	if ($new) {
 		elgg_create_river_item(array(
 			'view' => 'river/object/poll/create',
 			'action_type' => 'create',
+			'subject_guid' => $user->guid,
+			'object_guid' => $poll->guid,
+		));
+	} else {
+		// first remove any previous river entries referring to updating this poll to avoid duplicate entries
+		elgg_delete_river(array(
+			'view' => 'river/object/poll/update',
+			'action_type' => 'update',
+			'object_guid' => $poll->guid,
+		));
+		// let the river entry on updating a poll be made in the name of the poll owner in any case
+		$user = $poll->getOwnerEntity();
+		elgg_create_river_item(array(
+			'view' => 'river/object/poll/update',
+			'action_type' => 'update',
 			'subject_guid' => $user->guid,
 			'object_guid' => $poll->guid,
 		));

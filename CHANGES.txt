@@ -1,0 +1,86 @@
+Changelog
+=========
+
+1.9.4
+------
+
+- Updated version 1.8.4 for Elgg 1.9.
+And:
+- Removal of mod/poll/everyone.php (I believe this file is no longer necessary as a user should be directed to it anymore - if I'm wrong and you get issues by the file missing please tell me),
+- Add remaining inline script element JS code to AMD module,
+
+1.8.4
+-----
+
+- Total reset of votes when editing a poll (adding/removing choices or modifying existing choices). Problem was that users who already voted were unable to re-vote after poll choices had been changed. This could have been quite annoying for them if they wanted to change their vote based on the updated choices (a mischievous person would have even been able to switch the choices to contradict the poll results completely!). The only way to make it fair seemed to me to reset the votes to allow everyone a re-vote. Downside is that even correcting a typo in a poll choice text will reset the poll but his is unavoidable unfortunately,
+- Fixed bug where poll choices of a group poll got lost when poll was edited by the group admin but the poll is owned by another group member,
+- Fixed bug that prevented the description of a poll to be completely removed.
+
+1.10.3
+------
+
+- Updated version 1.9.3 for Elgg 1.9.
+
+1.9.3
+-----
+
+- Updated version 1.8.3 for Elgg 1.9.
+And:
+- Correctly handle polls with more than 10 choices.
+
+1.8.3
+-----
+
+- Fixed: admins can no longer see who voted for which choice if "Allow open polls" plugin setting is set to "No".
+
+1.8.2
+-----
+
+skipped.
+
+1.10.2
+-----
+
+- Based on version 1.9.2,
+- Fix of deprecation issues occuring on Elgg 1.10 (namely changing output/confirmlink view to output/url view).
+
+1.9.2 (thanks to Juho Jaakkola!!!)
+----------------------------------
+
+- Major cleanup / simplification / restructuring / updating / move to more object oriented code,
+- Conversion of javascript code into an AMD module,
+- Finnish translations added.
+
+1.9.1.1
+-------
+
+- Fixed a deprecation issue (with the hopefully soon to be released Widget Manager plugin for Elgg 1.9) with widgets urls (clickable title link).
+
+1.9.1
+-----
+
+- Updated version 1.8.1 for Elgg 1.9.
+
+1.8.1
+-----
+
+- Optional time limitation on polls (poll results are still shown afterwards but voting is no longer possible). Time limitation on polls can be enabled/disabled by plugin setting. Thanks to Jerome Bakker for the inspiration to this feature (and some initial code for implementing it, too),
+- Optionally make a poll an open poll (it's visible who voted for which poll choice). Thanks to tacid for the inspiration to this feature (and most of the code for implementing it, too),
+- Latest comments made on polls in sidebar on "All" and "Mine" poll pages,
+- Consistent display of poll creator, poll creation date, number of votes, number of comments and tags in all widgets, the list view and full view,
+- Removal of files no longer in use (that's why you should remove the plugin folder of any previous version to get rid of them, too).
+
+1.9.0
+-----
+
+- Updated version 1.8.0 for Elgg 1.9.
+
+1.8.0
+-----
+
+- Some general code cleanup,
+- Fix remaining issues of deprecated function usage,
+- Fixed widgets (both with and without usage of Widget Manager plugin),
+- Fixed notification sending,
+- Added (optional) description field,
+- Added convert script for existing polls that have the old response data structure of the original poll plugin.

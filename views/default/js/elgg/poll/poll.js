@@ -8,10 +8,10 @@ define(function(require) {
 	/**
 	 * Initialize the plugin javascript
 	 */
-	init = function() {
-		$('.poll-show-link').live('click', toggleResults);
+	function init() {
+		$('.poll-show-link').on('click', toggleResults);
 
-		$('.poll-vote-button').live('click', function(e) {
+		$('.poll-vote-button').on('click', function(e) {
 			var guid = $(this).attr("rel");
 
 			// submit the vote and display the response when it arrives
@@ -27,6 +27,7 @@ define(function(require) {
 			e.preventDefault();
 		});
 	};
+
 
 	/**
 	 * Toggle between poll voting form and the results
@@ -47,6 +48,6 @@ define(function(require) {
 
 		e.preventDefault();
 	};
-
-	elgg.register_hook_handler('init', 'system', init);
+	
+	init();
 });
