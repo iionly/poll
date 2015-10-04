@@ -77,6 +77,7 @@ function poll_init() {
 	elgg_register_action("poll/edit","$action_path/edit.php");
 	elgg_register_action("poll/delete","$action_path/delete.php");
 	elgg_register_action("poll/vote","$action_path/vote.php");
+	elgg_register_action("poll/reset","$action_path/reset.php");
 	elgg_register_action("poll/convert","$action_path/convert.php", "admin");
 }
 

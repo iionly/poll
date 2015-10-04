@@ -262,6 +262,19 @@ function poll_get_page_view($guid) {
 		elgg_set_page_owner_guid($page_owner->guid);
 		$title =  $poll->title;
 		$content = elgg_view_entity($poll, array('full_view' => true));
+
+		$allow_poll_reset = elgg_get_plugin_setting('allow_poll_reset', 'poll');
+		if (elgg_is_admin_logged_in() || ($allow_poll_reset == 'yes' && $poll->canEdit())) {
+			elgg_register_menu_item('title', array(
+				'name' => 'poll_reset',
+				'href' => elgg_get_site_url() . 'action/poll/reset?guid=' . $guid,
+				'text' => elgg_echo('poll:poll_reset'),
+				'title' => elgg_echo('poll:poll_reset_description'),
+				'confirm' => elgg_echo('poll:poll_reset_confirmation'),
+				'link_class' => 'elgg-menu-content elgg-button elgg-button-action'
+			));
+		}
+
 		//check to see if comments are on
 		if ($poll->comments_on != 'Off') {
 			$content .= elgg_view_comments($poll);

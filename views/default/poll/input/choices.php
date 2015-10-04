@@ -18,9 +18,7 @@ if ($poll) {
 			'class' => 'poll_input-poll-choice'
 		));
 
-		$delete_icon = elgg_view('output/img', array(
-			'src' => 'mod/poll/graphics/16-em-cross.png'
-		));
+		$delete_icon = elgg_view_icon('delete');
 
 		$delete_link = elgg_view('output/url', array(
 			'href' => '#',

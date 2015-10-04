@@ -1,8 +1,8 @@
-Poll plugin for Elgg 1.10 + 1.11
+Poll plugin for Elgg 1.10 - 1.12
 ================================
 
-Latest Version: 1.10.4  
-Released: 2015-06-16  
+Latest Version: 1.10.5  
+Released: 2015-10-04  
 Contact: iionly@gmx.de  
 License: GNU General Public License version 2  
 Copyright: (c) iionly, Juho Jaakkola, Kevin Jardine, John Mellberg and Dr Sanu P Moideen

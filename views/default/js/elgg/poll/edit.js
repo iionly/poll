@@ -31,7 +31,7 @@ define(function(require) {
 	var addChoice = function(e) {
 		// Create a new input element
 		var input = '<input type="text" class="poll_input-poll-choice" name="choice_text_' + cnum + '"> ';
-		var deleteIcon = '<img src="' + elgg.get_site_url() + 'mod/poll/graphics/16-em-cross.png">';
+		var deleteIcon = '<div class="elgg-icon elgg-icon-delete"></div>';
 		var deleteLink = '<a href="#" class="delete-choice" title="' + elgg.echo('poll:delete_choice') + '" data-id="' + cnum + '">' + deleteIcon + '</a>';
 
 		var container = '<div id="choice-container-' + cnum + '">' + input + deleteLink + '</div>';

@@ -29,6 +29,9 @@ return array(
 	'poll:close_date' => "Poll closing date (optional)",
 	'poll:voting_ended' => "Voting for this poll ended on %s.",
 	'poll:poll_closing_date' => "(Poll closing date: %s)",
+	'poll:poll_reset' => "Reset poll",
+	'poll:poll_reset_description' => "With this option you can reset the poll and delete all votes.",
+	'poll:poll_reset_confirmation' => "Are you sure that you want to reset this poll and delete all votes?",
 
 	'poll:convert:description' => 'ATTENTION: there were %s existing polls found that still have the old vote choices data structure. These polls won\'t work correctly on this version of the poll plugin.',
 	'poll:convert' => 'Update existing polls now',
@@ -44,6 +47,7 @@ return array(
 	'poll:settings:front_page:title' => "Admins can make a single poll at a time the site's \"Poll of the day\"? (Widget Manager plugin required for adding the corresponding widget to the index page)",
 	'poll:settings:allow_close_date:title' => "Allow setting a closing date for polls? (afterwards the results can still be viewed but voting is no longer permitted)",
 	'poll:settings:allow_open_poll:title' => "Allow open polls? (open polls show which user voted for which poll choice; if this option is enabled, admins can see who voted what on any polls)",
+	'poll:settings:allow_poll_reset:title' => "Allow poll owners resetting of votes on their polls? (enabling this option will add a title section button visible to poll owners and admins that will allow to reset all votes of a poll; with this option disabled admins will still be able to reset the votes)",
 	'poll:none' => "No polls found.",
 	'poll:not_found' => "The poll was not found.",
 	'poll:permission_error' => "You do not have permission to edit this poll.",
@@ -128,6 +132,7 @@ View and vote on the poll:
 	'poll:deleted' => "Your poll was successfully deleted.",
 	'poll:totalvotes' => "Total number of votes: %s",
 	'poll:voted' => "Your vote has been cast for this poll. Thank you for voting on this poll.",
+	'poll:poll_reset_success' => "The poll was reset successfully.",
 
 	/**
 	 * Error messages
@@ -136,5 +141,6 @@ View and vote on the poll:
 	'poll:novote' => "Sorry: you need to choose an option to vote in this poll.",
 	'poll:alreadyvoted' => "Sorry: you can vote only once.",
 	'poll:notfound' => "Sorry: we could not find the specified poll.",
-	'poll:notdeleted' => "Sorry: we could not delete this poll."
+	'poll:notdeleted' => "Sorry: we could not delete this poll.",
+	'poll:poll_reset_denied' => "Sorry: you have no sufficient permission for resetting this poll."
 );

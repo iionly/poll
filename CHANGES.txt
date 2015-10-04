@@ -1,6 +1,13 @@
 Changelog
 =========
 
+1.10.5
+------
+
+- Reset option added (allows removal of all given votes on a poll; permission for resetting is given to admins and optionally also poll owners by a new Poll plugin settings option),
+- Usage of Elgg's default delete icon instead of custom icon,
+- composer.json added.
+
 1.10.4
 ------
 

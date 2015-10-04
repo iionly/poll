@@ -126,4 +126,14 @@ $body .= elgg_view('input/radio', array('name' => 'params[allow_open_poll]', 'va
 $body .= '<br />';
 
 
+$allow_poll_reset = elgg_get_plugin_setting('allow_poll_reset', 'poll');
+if (!$allow_poll_reset) {
+	$allow_poll_reset = 'no';
+}
+$body .= elgg_echo('poll:settings:allow_poll_reset:title');
+$body .= '<br />';
+$body .= elgg_view('input/radio', array('name' => 'params[allow_poll_reset]', 'value' => $allow_poll_reset, 'options' => $yn_options));
+$body .= '<br />';
+
+
 echo $body;
