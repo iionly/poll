@@ -27,6 +27,9 @@ function poll_init() {
 	// Register a URL handler for poll posts
 	elgg_register_plugin_hook_handler('entity:url', 'object', 'poll_url');
 
+	// Allow liking of polls
+	elgg_register_plugin_hook_handler('likes:is_likable', 'object:poll', 'Elgg\Values::getTrue');
+
 	// notifications
 	$send_notification = elgg_get_plugin_setting('send_notification', 'poll');
 	if (!$send_notification || $send_notification != 'no') {

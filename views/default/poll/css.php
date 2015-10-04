@@ -51,3 +51,8 @@
 .poll_vote-label:hover {
 	color: red;
 }
+.elgg-icon-pollchoicedelete:before {
+	font-size: larger !important;
+	cursor: pointer;
+	content: "\f00d";
+}
