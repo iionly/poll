@@ -24,6 +24,8 @@ if (isset($vars['entity'])) {
 	$date = elgg_view_friendly_time($poll->time_created);
 
 	$allow_close_date = elgg_get_plugin_setting('allow_close_date','poll');
+
+	$closing_date = '';
 	if (($allow_close_date == 'yes') && (isset($poll->close_date))) {
 		$date_day = gmdate('j', $poll->close_date);
 		$date_month = gmdate('m', $poll->close_date);
