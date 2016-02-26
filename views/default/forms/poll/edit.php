@@ -67,6 +67,17 @@ echo $open_poll_input;
 ?>
 
 <div>
+	<label><?php echo elgg_echo('poll:max_votes:label'); ?></label>
+	<?php
+	echo elgg_view ('input/text', array(
+		'name' => 'max_votes',
+		'value' => $vars['fd']['max_votes'] ? $vars['fd']['max_votes'] : 1,
+	));
+	?>
+	<p class="elgg-text-help"><?php echo elgg_echo('poll:max_votes:desc'); ?></p>
+</div>
+
+<div>
 	<label><?php echo elgg_echo('tags'); ?></label>
 	<?php echo  elgg_view('input/tags', array('name' => 'tags', 'value' => $tags)); ?>
 </div>

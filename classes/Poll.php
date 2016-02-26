@@ -16,6 +16,11 @@ class Poll extends ElggObject {
 	private $response_count = 0;
 
 	/**
+	 * @var int $voter_count Total amount of voted users
+	 */
+	private $voter_count = 0;
+
+	/**
 	 * Set subtype
 	 */
 	protected function initializeAttributes() {
@@ -133,7 +138,7 @@ class Poll extends ElggObject {
 
 		elgg_set_ignore_access($ia);
 	}
-	
+
 	/**
 	 * Check for changes in poll choices on editing of a poll and update choices if necessary
 	 * If an update is necessary the existing votes get deleted and the vote counters get reset
@@ -212,10 +217,16 @@ class Poll extends ElggObject {
 			'limit' => false,
 		));
 
+		$users = array();
+
 		// Cache the amount of results for each choice
 		foreach ($responses as $response) {
+			$users[] = $response->owner_guid;
+
 			$this->responses_by_choice[$response->value] += 1;
 		}
+
+		$this->voter_count = count(array_unique($users));
 
 		// Cache the total amount of responses
 		$this->response_count = array_sum($this->responses_by_choice);
@@ -246,5 +257,17 @@ class Poll extends ElggObject {
 		$this->fetchResponses();
 
 		return $this->response_count;
+	}
+
+	/**
+	 * Get amount of people who have voted
+	 *
+	 * @return int
+	 */
+	public function getVoterCount() {
+		// Make sure the values have been populated
+		$this->fetchResponses();
+
+		return $this->voter_count;
 	}
 }
