@@ -61,6 +61,7 @@ return array(
 	'poll:front_page_label' => "Make this poll the site's new \"Poll of the day\"",
 	'poll:open_poll_label' => "Show in results which members voted for which choice (open poll)",
 	'poll:show_voters' => "Show voters",
+	'poll:multiple_choice_label' => "Multiple choice?",
 
 	/**
 	 * Poll widget

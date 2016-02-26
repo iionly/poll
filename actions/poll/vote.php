@@ -6,6 +6,9 @@
 
 // Get input data
 $response = get_input('response');
+if (!is_array($response)) {
+	$response=array($response);
+}
 $guid = get_input('guid');
 
 //get the poll entity
@@ -31,7 +34,9 @@ if ($poll->hasVoted($user)) {
 }
 
 // add vote as an annotation
-$poll->annotate('vote', $response, $poll->access_id);
+foreach($response as $vote){
+	$poll->annotate('vote', $vote, $poll->access_id);
+}
 
 // Add to river
 $poll_vote_in_river = elgg_get_plugin_setting('vote_in_river', 'poll');

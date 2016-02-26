@@ -66,6 +66,22 @@ if($allow_open_poll == 'yes') {
 echo $open_poll_input;
 ?>
 
+<?
+
+//echo var_dump($vars['fd']);
+//exit();
+
+if ($vars['fd']['multiple_choice']) {
+	$multiple_poll_input = elgg_view('input/checkbox', array('name' => 'multiple_choice','value' => 1, 'checked' => 'checked'));
+} else {
+	$multiple_poll_input = elgg_view('input/checkbox', array('name' => 'multiple_choice','value' => 1));
+}
+?>
+<p>
+	<?php echo  $multiple_poll_input; ?>
+	<?php echo elgg_echo('poll:multiple_choice_label'); ?>
+</p>
+
 <div>
 	<label><?php echo elgg_echo('tags'); ?></label>
 	<?php echo  elgg_view('input/tags', array('name' => 'tags', 'value' => $tags)); ?>
