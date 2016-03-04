@@ -25,6 +25,13 @@ if (empty($response)) {
 	forward(REFERER);
 }
 
+//  Make sure the response have not more than the maximum votes
+
+if (count($response) > $poll->multiple_choice) {
+	register_error(elgg_echo("poll:multiple_choice_hint",array($poll->multiple_choice)));
+	forward(REFERER);
+}
+
 $user = elgg_get_logged_in_user_entity();
 
 // Check if user has already voted

@@ -4,9 +4,11 @@
  */
 
 $poll = $vars['entity'];
+$multiple_hint="";
 
-if($poll->multiple_choice) {
+if($poll->multiple_choice>1) {
 	$input_type = 'input/checkboxes';
+	$multiple_hint=elgg_echo('poll:multiple_choice_hint',array($poll->multiple_choice));
 } else {
 	$input_type = 'input/radio';
 }
@@ -36,6 +38,9 @@ $callback_input = elgg_view('input/hidden', array(
 echo <<<HTML
 	<div>
 		$response_input
+	</div>
+	<div>
+		$multiple_hint
 	</div>
 	<div>
 		$guid_input

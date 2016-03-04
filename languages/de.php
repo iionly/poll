@@ -61,6 +61,8 @@ return array(
 	'poll:front_page_label' => "Diese Umfrage zur aktuellen \"Umfrage der Stunde\" machen",
 	'poll:open_poll_label' => "Zeige in den Ergebnissen, welche Mitglieder für was gestimmt haben (offene Umfrage)",
 	'poll:show_voters' => "Zeige Umfrageteilnehmer",
+	'poll:multiple_choice_label' => "Anzahl maximale Stimmen je Teilnehmer",
+	'poll:multiple_choice_hint' => "Du hast maximal %s Stimmen.",
 
 	/**
 	 * Poll widget
