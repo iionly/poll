@@ -26,8 +26,8 @@ if (empty($response)) {
 }
 
 //  Make sure the response have not more than the maximum votes
-
-if (count($response) > $poll->multiple_choice) {
+$max= $poll->multiple_choice > 0 ? $poll->multiple_choice : 1;
+if (count($response) > $max) {
 	register_error(elgg_echo("poll:multiple_choice_hint",array($poll->multiple_choice)));
 	forward(REFERER);
 }
