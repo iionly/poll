@@ -140,6 +140,8 @@ Afficher le sondage et voter :
 	'poll:alreadyvoted' => "Désolé : vous ne pouvez répondre qu'une seule fois.",
 	'poll:novote' => "Désolé : vous devez choisir une option pour voter dans ce sondage.",
 	'poll:notfound' => "Désolé : impossible de trouver le sondage correspondant.",
-	'poll:notdeleted' => "Désolé : impossible de supprimer ce sondage."
-	'poll:poll_reset_denied' => "Désolé : vous n'avez pas l'autorisation de réinitialiser ce sondage."
+	'poll:notdeleted' => "Désolé : impossible de supprimer ce sondage.",
+	'poll:poll_reset_denied' => "Désolé : vous n'avez pas l'autorisation de réinitialiser ce sondage.",
+	
 );
+
