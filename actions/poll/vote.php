@@ -6,6 +6,9 @@
 
 // Get input data
 $response = get_input('response');
+if (!is_array($response)) {
+	$response=array($response);
+}
 $guid = get_input('guid');
 
 //get the poll entity
@@ -22,6 +25,13 @@ if (empty($response)) {
 	forward(REFERER);
 }
 
+//  Make sure the response have not more than the maximum votes
+$max= $poll->multiple_choice > 0 ? $poll->multiple_choice : 1;
+if (count($response) > $max) {
+	register_error(elgg_echo("poll:multiple_choice_hint",array($poll->multiple_choice)));
+	forward(REFERER);
+}
+
 $user = elgg_get_logged_in_user_entity();
 
 // Check if user has already voted
@@ -31,7 +41,9 @@ if ($poll->hasVoted($user)) {
 }
 
 // add vote as an annotation
-$poll->annotate('vote', $response, $poll->access_id);
+foreach($response as $vote){
+	$poll->annotate('vote', $vote, $poll->access_id);
+}
 
 // Add to river
 $poll_vote_in_river = elgg_get_plugin_setting('vote_in_river', 'poll');

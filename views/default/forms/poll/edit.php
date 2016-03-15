@@ -67,6 +67,19 @@ echo $open_poll_input;
 ?>
 
 <div>
+<?php
+
+echo "<label>",elgg_echo('poll:multiple_choice_label'),"</label>";
+
+echo elgg_view ('input/text',array(
+	'name'=>'multiple_choice',
+	'value'=>$vars['fd']['multiple_choice'] ? $vars['fd']['multiple_choice'] : 1
+	));
+?>
+
+</div>
+
+<div>
 	<label><?php echo elgg_echo('tags'); ?></label>
 	<?php echo  elgg_view('input/tags', array('name' => 'tags', 'value' => $tags)); ?>
 </div>

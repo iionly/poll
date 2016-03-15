@@ -120,6 +120,7 @@ function poll_prepare_edit_body_vars($poll = null) {
 		'description' => null,
 		'close_date' => null,
 		'open_poll' => null,
+		'multiple_choice' => null,
 		'tags' => null,
 		'front_page' => null,
 		'access_id' => ACCESS_DEFAULT,

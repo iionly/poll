@@ -17,6 +17,7 @@ $number_of_choices = (int) get_input('number_of_choices', 0);
 $front_page = get_input('front_page');
 $close_date = get_input('close_date');
 $open_poll = (int)get_input('open_poll');
+$multiple_choice = (int)get_input('multiple_choice');
 $tags = get_input('tags');
 $access_id = get_input('access_id');
 $container_guid = get_input('container_guid');
@@ -33,6 +34,12 @@ if ($number_of_choices) {
 			$count ++;
 		}
 	}
+}
+
+// Make sure the multiple choice options are not higher the the response choices
+if($multiple_choice > $count){
+	register_error(elgg_echo("poll:multiple_choice_error"));
+	forward(REFERER);
 }
 
 // Make sure the question and the response options aren't empty
@@ -96,6 +103,7 @@ $poll->title = $question;
 $poll->description = $description;
 $poll->open_poll = $open_poll ? 1 : 0;
 $poll->close_date = empty($close_date) ? null : $close_date;
+$poll->multiple_choice = $multiple_choice;
 $poll->tags = string_to_tag_array($tags);
 
 if (!$poll->save()) {
