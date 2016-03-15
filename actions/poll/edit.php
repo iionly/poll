@@ -36,6 +36,12 @@ if ($number_of_choices) {
 	}
 }
 
+// Make sure the multiple choice options are not higher the the response choices
+if($multiple_choice > $count){
+	register_error(elgg_echo("poll:multiple_choice_error"));
+	forward(REFERER);
+}
+
 // Make sure the question and the response options aren't empty
 if (empty($question) || ($count == 0)) {
 	register_error(elgg_echo("poll:blank"));
