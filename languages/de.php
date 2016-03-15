@@ -63,6 +63,7 @@ return array(
 	'poll:show_voters' => "Zeige Umfrageteilnehmer",
 	'poll:multiple_choice_label' => "Anzahl maximale Stimmen je Teilnehmer",
 	'poll:multiple_choice_hint' => "Du hast maximal %s Stimmen.",
+	'poll:multiple_choice_error' => "Die maximale Anzahl der Stimmen darf nicht höher sein als die Anzahl der Auswahlmöglichkeiten",
 
 	/**
 	 * Poll widget

@@ -63,7 +63,8 @@ return array(
 	'poll:show_voters' => "Show voters",
 	'poll:multiple_choice_label' => "Number maximum votes per participant",
 	'poll:multiple_choice_hint' => "You have a maximum of %s votes",
-
+	'poll:multiple_choice_error' => "The maximum number of votes may not be higher than the number of choices",
+	
 	/**
 	 * Poll widget
 	 **/

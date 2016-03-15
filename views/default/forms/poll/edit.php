@@ -69,20 +69,14 @@ echo $open_poll_input;
 <div>
 <?php
 
-$options_values = array();
-for ($i = 1; $i < 11; $i++) {
-	$options_values[$i] = $i;
-}
+echo "<label>",elgg_echo('poll:multiple_choice_label'),"</label>";
 
-echo elgg_view ('input/select',array(
+echo elgg_view ('input/text',array(
 	'name'=>'multiple_choice',
-	'id'=>'',
-	'value'=>$vars['fd']['multiple_choice'] ? $vars['fd']['multiple_choice'] : 1,
-	'options_values'=>$options_values
+	'value'=>$vars['fd']['multiple_choice'] ? $vars['fd']['multiple_choice'] : 1
 	));
 ?>
 
-	<?php echo elgg_echo('poll:multiple_choice_label'); ?>
 </div>
 
 <div>
