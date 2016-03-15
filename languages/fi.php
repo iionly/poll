@@ -57,6 +57,10 @@ return array(
 	'poll:front_page_label' => 'Tee tästä "Päivän kysely"',
 	'poll:open_poll_label' => "Näytä tuloksien yhteydessä, kuka on vastannut mihinkin kysymykseen",
 	'poll:show_voters' => "Näytä vastaajat",
+	'poll:max_votes:label' => "Äänten maksimimäärä",
+	'poll:max_votes:desc' => "Määrittää, montaako eri vaihtoehtoa henkilö voi äänestää",
+	'poll:max_votes:exceeded' => "Äänten maksimimäärä ei voi ylittää vaihtoehtojen määrää",
+	'poll:max_votes:info' => "Voit äänestää %s vaihtoehtoa",
 
 	/**
 	 * Poll widget

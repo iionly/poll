@@ -86,4 +86,4 @@ HTML;
 
 ?>
 
-<p><?php echo elgg_echo('poll:totalvotes', array($total)); ?></p>
+<p><?php echo elgg_echo('poll:totalvotes', array($poll->getVoterCount())); ?></p>

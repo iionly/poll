@@ -61,6 +61,10 @@ return array(
 	'poll:front_page_label' => "Diese Umfrage zur aktuellen \"Umfrage der Stunde\" machen",
 	'poll:open_poll_label' => "Zeige in den Ergebnissen, welche Mitglieder für was gestimmt haben (offene Umfrage)",
 	'poll:show_voters' => "Zeige Umfrageteilnehmer",
+	'poll:max_votes:label' => "Maximal mögliche Anzahl an Stimmen pro Teilnehmer der Umfrage",
+	'poll:max_votes:desc' => "Dies ist Maximalzahl an Auswahlmöglichkeiten, die ein Teilnehmer der Umfrage bei der Stimmabgabe selektieren kann.",
+	'poll:max_votes:exceeded' => "Die maximale Anzahl an Stimmen kann nicht größer als die Anzahl an Auswahlmöglichkeiten der Umfrage sein.",
+	'poll:max_votes:info' => "Du hast maximal %s Stimmen.",
 
 	/**
 	 * Poll widget

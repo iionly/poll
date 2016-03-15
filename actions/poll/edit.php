@@ -17,6 +17,7 @@ $number_of_choices = (int) get_input('number_of_choices', 0);
 $front_page = get_input('front_page');
 $close_date = get_input('close_date');
 $open_poll = (int)get_input('open_poll');
+$max_votes = (int)get_input('max_votes');
 $tags = get_input('tags');
 $access_id = get_input('access_id');
 $container_guid = get_input('container_guid');
@@ -38,6 +39,12 @@ if ($number_of_choices) {
 // Make sure the question and the response options aren't empty
 if (empty($question) || ($count == 0)) {
 	register_error(elgg_echo("poll:blank"));
+	forward(REFERER);
+}
+
+// Make sure number of votes doesn't exceed number of available options
+if ($max_votes > $count) {
+	register_error(elgg_echo("poll:max_votes:exceeded"));
 	forward(REFERER);
 }
 
@@ -96,6 +103,7 @@ $poll->title = $question;
 $poll->description = $description;
 $poll->open_poll = $open_poll ? 1 : 0;
 $poll->close_date = empty($close_date) ? null : $close_date;
+$poll->max_votes = $max_votes;
 $poll->tags = string_to_tag_array($tags);
 
 if (!$poll->save()) {

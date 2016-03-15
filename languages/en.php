@@ -61,6 +61,10 @@ return array(
 	'poll:front_page_label' => "Make this poll the site's new \"Poll of the day\"",
 	'poll:open_poll_label' => "Show in results which members voted for which choice (open poll)",
 	'poll:show_voters' => "Show voters",
+	'poll:max_votes:label' => "Max votes",
+	'poll:max_votes:desc' => "Allowed number of votes per participant",
+	'poll:max_votes:exceeded' => "Number of allowed votes cannot exceed number of options",
+	'poll:max_votes:info' => "You have a maximum of %s votes",
 
 	/**
 	 * Poll widget
