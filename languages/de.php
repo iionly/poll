@@ -48,6 +48,7 @@ return array(
 	'poll:settings:allow_close_date:title' => "Befristete Umfragen erlauben? (nach Ablauf der Frist sind die Ergebnisse der Umfrage weiterhin sichtbar aber eine Stimmabgabe ist nicht mehr möglich)",
 	'poll:settings:allow_open_poll:title' => "Offene Umfragen erlauben? (Bei offenen Umfragen ist sichtbar, welche Mitglieder welche Antwort gewählt haben; wenn diese Option aktiviert ist, können Admins bei allen Umfragen sehen, wer wie gewählt hat)",
 	'poll:settings:allow_poll_reset:title' => "Erstellern von Umfragen erlauben, die abgegebenen Stimmen zurückzusetzen? (wenn diese Option aktiviert ist, können die Ersteller einer Umfrage und Admins über einen Knopf im Titelbereich einer Umfrage die abgegebenen Stimmen zurücksetzen; wenn die Option deaktiviert ist, ist dies nur Admins möglich)",
+	'poll:settings:multiple_answer_polls:title' => "Umfragen mit Mehrfachantworten erlauben? (Bei diesen Umfragen können die Mitglieder beim Abstimmen mehr als nur eine Auswahlmöglichkeit selektieren. Die Maximalzahl der gleichzeitig selektierbaren Auswahlmöglichkeiten kann der Ersteller der Umfrage festlegen. Solltest Du die Option zur Erstellung von Umfragen mit Mehrfachantworten wieder deaktivieren nachdem solche Umfragen bereits erstellt wurden, bleibt die vorher gesetzte Maximalzahl von Auswahlmöglichkeiten unveränderbar die gleiche, solange die Auswahlmöglichkeiten der Umfrage nicht modifiziert werden. Im Falle einer Änderung der Auswahlmöglichkeiten wird die Maximalzahl der selektierbaren Auswahlmöglichkeiten auf 1 zurückgesetzt, es sei denn die Erstellung von Umfragen mit Mehrfachantworten ist zum Zeitpunkt der Modifizierung wieder erlaubt)",
 	'poll:none' => "Keine Umfragen gefunden.",
 	'poll:not_found' => "Diese Umfrage konnte nicht gefunden werden.",
 	'poll:permission_error' => "Du hast keine ausreichende Berechtigung, um diese Umfrage zu bearbeiten.",
@@ -61,6 +62,11 @@ return array(
 	'poll:front_page_label' => "Diese Umfrage zur aktuellen \"Umfrage der Stunde\" machen",
 	'poll:open_poll_label' => "Zeige in den Ergebnissen, welche Mitglieder für was gestimmt haben (offene Umfrage)",
 	'poll:show_voters' => "Zeige Umfrageteilnehmer",
+	'poll:max_votes:label' => "Mehrfachantworten bis zur folgenden Maximalzahl erlauben",
+	'poll:max_votes:desc' => "Wenn eine Maximalzahl größer eins eingegeben wird, sind Mehrfachantworten in der Umfrage möglich. Ein Teilnehmer kann dann gleichzeitig mehrere Auswahlmöglichkeiten bis zu dieser Maximalzahl selektieren. Du kannst keine Maximalzahl größer als die Anzahl der Auswahlmöglichkeiten der Umfrage eingeben.",
+	'poll:max_votes:exceeded' => "Die Maximalzahl von gleichzeitig ausgewählten Auswahlmöglichkeiten kann nicht größer als die Gesamtzahl an Auswahlmöglichkeiten der Umfrage sein.",
+	'poll:max_votes:info' => "Du kannst bis zu %s Auswahlmöglichkeiten gleichzeitig selektieren.",
+	'poll:max_votes:not_allowed_hint' => "ACHTUNG: zum dem Zeitpunkt als diese Umfrage hinzugefügt wurde, war die Erstellung von Umfragen mit Mehrfachantworten erlaubt. Allerdings ist dies zum gegenwärtigen Zeitpunkt nicht mehr erlaubt, da der Seitenadministrator diese Option deaktiviert hat. Derzeit ist es den Mitgliedern erlaubt, in dieser Umfrage bei der Stimmabgabe bis zu maximal %s Auswahlmöglichkeiten zu selektieren und diese Maximalzahl wird unverändert bleiben, solange Du keine Änderungen an den Auswahlmöglichkeiten dieser Umfrage vornimmst. Solltest Du allerdings die Auswahlmöglichkeiten modifizieren, wird die Anzahl der maximal selektierbaren Auswahlmöglichkeiten auf 1 zurückgesetzt.",
 
 	/**
 	 * Poll widget

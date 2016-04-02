@@ -48,6 +48,7 @@ return array(
 	'poll:settings:allow_close_date:title' => "Allow setting a closing date for polls? (afterwards the results can still be viewed but voting is no longer permitted)",
 	'poll:settings:allow_open_poll:title' => "Allow open polls? (open polls show which user voted for which poll choice; if this option is enabled, admins can see who voted what on any polls)",
 	'poll:settings:allow_poll_reset:title' => "Allow poll owners resetting of votes on their polls? (enabling this option will add a title section button visible to poll owners and admins that will allow to reset all votes of a poll; with this option disabled admins will still be able to reset the votes)",
+	'poll:settings:multiple_answer_polls:title' => "Allow multiple-answer polls? (In these polls the members can select more than a single poll choice when voting. The maximum number of choices possible can be set by the creator of the poll. If you turn off multiple-answer polls after such polls have already been created, the number of allowed choices in these polls will not be changed unless the poll choices are modified. In case the poll choices get modified though, the maximum allowed number of choices will be reset to 1 unless multiple-answers are allowed at the time of modification)",
 	'poll:none' => "No polls found.",
 	'poll:not_found' => "The poll was not found.",
 	'poll:permission_error' => "You do not have permission to edit this poll.",
@@ -61,6 +62,11 @@ return array(
 	'poll:front_page_label' => "Make this poll the site's new \"Poll of the day\"",
 	'poll:open_poll_label' => "Show in results which members voted for which choice (open poll)",
 	'poll:show_voters' => "Show voters",
+	'poll:max_votes:label' => "Allow multiple selection of choices per participant up to a maximum of",
+	'poll:max_votes:desc' => "If you enter a number larger than one, the poll will become a multiple-answer poll that allows participants to select multiple poll choices on their vote up to the maximum number entered here. You can't enter a maximum number larger than the total number of poll choices.",
+	'poll:max_votes:exceeded' => "The maximum number of selectable poll choices can't exceed the total number of poll choices.",
+	'poll:max_votes:info' => "You can select multiple poll choices up to a maximum of %s on your vote.",
+	'poll:max_votes:not_allowed_hint' => "ATTENTION: when this poll was created the site admin allowed multi-answer polls to be created but this feature is currently no longer enabled. Currently, this poll allows the voters to select up to %s poll choices on voting and this number will stay unchanged unless you modify the poll choices. But if you modify the poll choices the maximum number of choices selectable on voting will be reset to 1.",
 
 	/**
 	 * Poll widget

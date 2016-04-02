@@ -126,6 +126,16 @@ $body .= elgg_view('input/radio', array('name' => 'params[allow_open_poll]', 'va
 $body .= '<br />';
 
 
+$multiple_answer_polls = elgg_get_plugin_setting('multiple_answer_polls', 'poll');
+if (!$multiple_answer_polls) {
+	$multiple_answer_polls = 'no';
+}
+$body .= elgg_echo('poll:settings:multiple_answer_polls:title');
+$body .= '<br />';
+$body .= elgg_view('input/radio', array('name' => 'params[multiple_answer_polls]', 'value' => $multiple_answer_polls, 'options' => $yn_options));
+$body .= '<br />';
+
+
 $allow_poll_reset = elgg_get_plugin_setting('allow_poll_reset', 'poll');
 if (!$allow_poll_reset) {
 	$allow_poll_reset = 'no';

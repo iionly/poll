@@ -4,8 +4,16 @@
  */
 
 $poll = $vars['entity'];
+$multiple_hint = "";
 
-$response_input = elgg_view('input/radio', array(
+if ($poll->max_votes > 1) {
+	$input_type = 'input/checkboxes';
+	$multiple_hint = elgg_echo('poll:max_votes:info', array($poll->max_votes));
+} else {
+	$input_type = 'input/radio';
+}
+
+$response_input = elgg_view($input_type, array(
 	'name' => 'response',
 	'options' => poll_get_choice_array($poll),
 ));
@@ -30,6 +38,9 @@ $callback_input = elgg_view('input/hidden', array(
 echo <<<HTML
 	<div>
 		$response_input
+	</div>
+	<div>
+		$multiple_hint
 	</div>
 	<div>
 		$guid_input
