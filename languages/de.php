@@ -139,6 +139,8 @@ Schau Dir die Umfrage an und gib Deine Stimme ab:
 	'poll:totalvotes' => "Gesamtzahl der abgegebenen Stimmen: %s",
 	'poll:voted' => "Deine Stimme wurde erfasst. Danke für die Beteiligung in dieser Umfrage.",
 	'poll:poll_reset_success' => "Die Umfrage wurde zurückgesetzt.",
+	'poll:upgrade' => 'Aktualisieren',
+	'poll:upgrade:success' => 'Das Upgrade des Poll-Plugins war erfolgreich.',
 
 	/**
 	 * Error messages

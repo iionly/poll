@@ -139,6 +139,8 @@ View and vote on the poll:
 	'poll:totalvotes' => "Total number of votes: %s",
 	'poll:voted' => "Your vote has been cast for this poll. Thank you for voting on this poll.",
 	'poll:poll_reset_success' => "The poll was reset successfully.",
+	'poll:upgrade' => 'Upgrade',
+	'poll:upgrade:success' => 'Upgrade of Poll plugin was successful.',
 
 	/**
 	 * Error messages

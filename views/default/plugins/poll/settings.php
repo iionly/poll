@@ -1,4 +1,19 @@
 <?php
+
+elgg_load_library('elgg:poll');
+
+if (poll_is_upgrade_available()) {
+	echo '<div class="mtl elgg-admin-notices">';
+	echo '<p>';
+	echo elgg_view('output/url', array(
+		'text' => elgg_echo('poll:upgrade'),
+		'href' => 'action/poll/upgrade',
+		'is_action' => true,
+	));
+	echo '</p>';
+	echo '</div>';
+}
+
 $group_options = array(' '.elgg_echo('poll:settings:group_poll_default')=>'yes_default',
 	' '.elgg_echo('poll:settings:group_poll_not_default')=>'yes_not_default',
 	' '.elgg_echo('poll:settings:no')=>'no'

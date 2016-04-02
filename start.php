@@ -82,6 +82,7 @@ function poll_init() {
 	elgg_register_action("poll/vote","$action_path/vote.php");
 	elgg_register_action("poll/reset","$action_path/reset.php");
 	elgg_register_action("poll/convert","$action_path/convert.php", "admin");
+	elgg_register_action("poll/upgrade","$action_path/upgrade.php", "admin");
 }
 
 

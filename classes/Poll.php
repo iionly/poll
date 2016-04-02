@@ -140,12 +140,30 @@ class Poll extends ElggObject {
 	}
 
 	/**
+	 * Update acccess_id of poll choices to match (changed) access_id of poll
+	 *
+	 */
+	public function updateChoicesAccessID() {
+		// Ignore access (necessary in case a group admin is editing the poll of another group member)
+		$ia = elgg_set_ignore_access(true);
+
+		$choices = $this->getChoices();
+
+		foreach ($choices as $choice) {
+			$choice->access_id = $this->access_id;
+			$choice->save();
+		}
+
+		elgg_set_ignore_access($ia);
+	}
+
+	/**
 	 * Check for changes in poll choices on editing of a poll and update choices if necessary
 	 * If an update is necessary the existing votes get deleted and the vote counters get reset
 	 *
 	 * @param array $choices
 	 */
-	public function updateChoices(array $choices) {
+	public function updateChoices(array $choices, $former_access_id) {
 		if (empty($choices)) {
 			return false;
 		}
@@ -168,7 +186,11 @@ class Poll extends ElggObject {
 		if ($choices_changed) {
 			$this->deleteVotes();
 			$this->setChoices($choices);
+		} else if ($former_access_id != $this->access_id) {
+			$this->updateChoicesAccessID();
 		}
+		
+		return $choices_changed;
 	}
 
 	/**

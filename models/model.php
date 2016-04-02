@@ -330,3 +330,18 @@ function poll_manage_front_page($poll, $front_page) {
 		}
 	}
 }
+
+function poll_is_upgrade_available() {
+	require_once elgg_get_plugins_path() . "poll/version.php";
+
+	$local_version = elgg_get_plugin_setting('local_version', 'poll');
+	if ($local_version === false) {
+		$local_version = 0;
+	}
+
+	if ($local_version == $version) {
+		return false;
+	} else {
+		return true;
+	}
+}

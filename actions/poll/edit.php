@@ -83,6 +83,8 @@ if ($guid) {
 		forward(REFERER);
 	}
 
+	$former_access_id = $poll->access_id;
+
 	// Success message
 	$message = elgg_echo("poll:edited");
 } else {
@@ -116,7 +118,7 @@ if (!$poll->save()) {
 if ($new) {
 	$poll->setChoices($new_choices);
 } else {
-	$choices_changed = $poll->updateChoices($new_choices);
+	$choices_changed = $poll->updateChoices($new_choices, $former_access_id);
 	// if poll choices have been modified and this poll has been created as multiple-anwer poll and
 	// such polls are currently not allowed then reset the max number of allowed votes to 1
 	if ($max_votes > 1 && $choices_changed) {
