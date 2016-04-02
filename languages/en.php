@@ -37,6 +37,7 @@ return array(
 	'poll:convert' => 'Update existing polls now',
 	'poll:convert:confirm' => 'The update is irreversible. Are you sure you want to convert the poll vote choices data structure?',
 
+	'poll:settings:notification_on_vote:title' => "Notify creator of a poll on a voting having been made in a poll? (the creator will receive notifications depending on his/her user-specific, site-wide notification settings, i.e. email notifications and/or site-notifications or none)",
 	'poll:settings:group:title' => "Allow group polls?",
 	'poll:settings:group_poll_default' => "yes, on by default",
 	'poll:settings:group_poll_not_default' => "yes, off by default",
@@ -117,6 +118,8 @@ return array(
 View and vote on the poll:
 %s
 ',
+	'poll:notification_on_vote:subject' => "New vote in poll",
+	'poll:notification_on_vote:body' => "%s,\n\nthere's a new vote in your poll \"%s\".\n\nYou can view the current results of the poll here: \n\n%s\n",
 
 	/**
 	 * Poll river

@@ -55,6 +55,16 @@ $body .= elgg_view('input/radio', array('name' => 'params[send_notification]', '
 $body .= '<br />';
 
 
+$notification_on_vote = elgg_get_plugin_setting('notification_on_vote', 'poll');
+if (!$notification_on_vote) {
+	$notification_on_vote = 'no';
+}
+$body .= elgg_echo('poll:settings:notification_on_vote:title');
+$body .= '<br />';
+$body .= elgg_view('input/radio', array('name' => 'params[notification_on_vote]', 'value' => $notification_on_vote, 'options' => $yn_options));
+$body .= '<br />';
+
+
 $poll_create_in_river = elgg_get_plugin_setting('create_in_river', 'poll');
 if (!$poll_create_in_river) {
 	$poll_create_in_river = 'yes';

@@ -37,6 +37,7 @@ return array(
 	'poll:convert' => 'Vorhandene Umfragen jetzt aktualisieren',
 	'poll:convert:confirm' => 'Diese Aktualisierung ist irreversibel. Bist Du sicher, dass Du die Datenstruktur der Auswahlmöglichkeiten dieser Umfragen jetzt konvertieren willst?',
 
+	'poll:settings:notification_on_vote:title' => "Bei Stimmabgabe eine Benachrichtigung an den Ersteller einer Umfrage senden? (Der Ersteller der Umfrage erhält Benachrichtigungen entsprechend seiner benutzerspezifischen, seitenweiten Benachrichtigungseinstellungen, d.h. Emailbenachrichtungen und/oder Seiten-Benachrichtigungen oder gar keine)",
 	'poll:settings:group:title' => "Gruppen-Umfragen erlauben?",
 	'poll:settings:group_poll_default' => "ja, standardmäßig aktiviert",
 	'poll:settings:group_poll_not_default' => "ja, standardmäßig deaktiviert",
@@ -117,6 +118,8 @@ return array(
 Schau Dir die Umfrage an und gib Deine Stimme ab:
 %s
 ',
+	'poll:notification_on_vote:subject' => "Neue Stimmabgabe in einer Deiner Umfragen",
+	'poll:notification_on_vote:body' => "%s,\n\nin Deiner Umfrage \"%s\" wurde eine neue Stimme abgegeben.\n\nDu kannst das aktuelle Ergebnis der Umfrage hier ansehen: \n\n%s\n",
 
 	/**
 	 * Poll river

@@ -55,6 +55,22 @@ if ($poll_vote_in_river != 'no') {
 	));
 }
 
+// Notify creator of poll
+$notification_on_vote = elgg_get_plugin_setting('notification_on_vote', 'poll');
+if ($notification_on_vote == 'yes') {
+	if ($user->getGUID() != $poll->getOwnerGUID()) {
+		$poll_owner = $poll->getOwnerEntity();
+		$owner_language = ($poll_owner->language) ? $poll_owner->language : (($site_language = elgg_get_config('language')) ? $site_language : 'en');
+		$subject = elgg_echo('poll:notification_on_vote:subject', array(), $owner_language);
+		$message = elgg_echo('poll:notification_on_vote:body', array($poll_owner->name, $poll->title, $poll->getURL()), $owner_language);
+		notify_user($poll->getOwnerGUID(), elgg_get_config('site_guid'), $subject, $message, array(
+			'object' => $poll,
+			'action' => 'vote',
+			'summary' => $subject
+		));
+	}
+}
+
 if (get_input('callback')) {
 	echo elgg_view('poll/poll_widget_content', array('entity' => $poll));
 }
