@@ -6,6 +6,9 @@
 
 // Get input data
 $response = get_input('response');
+if (!is_array($response)) {
+	$response = array($response);
+}
 $guid = get_input('guid');
 
 //get the poll entity
@@ -22,6 +25,12 @@ if (empty($response)) {
 	forward(REFERER);
 }
 
+// Make sure user hasn't voted more than the maximum amount of options
+if (count($response) > $poll->max_votes) {
+	register_error(elgg_echo("poll:max_votes:info", array($poll->max_votes)));
+	forward(REFERER);
+}
+
 $user = elgg_get_logged_in_user_entity();
 
 // Check if user has already voted
@@ -31,7 +40,9 @@ if ($poll->hasVoted($user)) {
 }
 
 // add vote as an annotation
-$poll->annotate('vote', $response, $poll->access_id);
+foreach($response as $vote){
+	$poll->annotate('vote', $vote, $poll->access_id);
+}
 
 // Add to river
 $poll_vote_in_river = elgg_get_plugin_setting('vote_in_river', 'poll');
@@ -42,6 +53,22 @@ if ($poll_vote_in_river != 'no') {
 		'subject_guid' => $user->guid,
 		'object_guid' => $poll->guid,
 	));
+}
+
+// Notify creator of poll
+$notification_on_vote = elgg_get_plugin_setting('notification_on_vote', 'poll');
+if ($notification_on_vote == 'yes') {
+	if ($user->getGUID() != $poll->getOwnerGUID()) {
+		$poll_owner = $poll->getOwnerEntity();
+		$owner_language = ($poll_owner->language) ? $poll_owner->language : (($site_language = elgg_get_config('language')) ? $site_language : 'en');
+		$subject = elgg_echo('poll:notification_on_vote:subject', array(), $owner_language);
+		$message = elgg_echo('poll:notification_on_vote:body', array($poll_owner->name, $poll->title, $poll->getURL()), $owner_language);
+		notify_user($poll->getOwnerGUID(), elgg_get_config('site_guid'), $subject, $message, array(
+			'object' => $poll,
+			'action' => 'vote',
+			'summary' => $subject
+		));
+	}
 }
 
 if (get_input('callback')) {

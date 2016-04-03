@@ -41,9 +41,11 @@ return array(
 	'poll:settings:group_access:title' => "Kuva voi luoda kyselyitä ryhmiin?",
 	'poll:settings:group_access:admins' => "Ryhmien omistajat sekä sivuston ylläpitäjät",
 	'poll:settings:group_access:members' => "Ryhmän jäsenet",
-	'poll:settings:front_page:title' => 'Ota käyttöön mahdollisuus tehdä kyselystä "Päivän kysely"? (Vaatii Widget manager -pluginin.)',
+	'poll:settings:front_page:title' => 'Ota käyttöön mahdollisuus tehdä kyselystä "Päivän kysely"?',
+	'poll:settings:front_page:desc' => '(Vaatii Widget manager -pluginin.)',
 	'poll:settings:allow_close_date:title' => "Ota käyttöön kyselyn sulkeutumispäivä?",
-	'poll:settings:allow_open_poll:title' => "Ota käyttöön avoimet kyselyt? (Näyttää vastausten kohdalla niihin vastanneet henkilöt)",
+	'poll:settings:allow_open_poll:title' => "Ota käyttöön avoimet kyselyt?",
+	'poll:settings:allow_open_poll:desc' => "(Näyttää vastausten kohdalla niihin vastanneet henkilöt)",
 	'poll:none' => "Ei kyselyitä",
 	'poll:not_found' => "Kyselyä ei löytynyt",
 	'poll:permission_error' => "Sinulla ei ole oikeuksia tämän kyselyn muokkaamiseen",
@@ -57,6 +59,10 @@ return array(
 	'poll:front_page_label' => 'Tee tästä "Päivän kysely"',
 	'poll:open_poll_label' => "Näytä tuloksien yhteydessä, kuka on vastannut mihinkin kysymykseen",
 	'poll:show_voters' => "Näytä vastaajat",
+	'poll:max_votes:label' => "Äänten maksimimäärä",
+	'poll:max_votes:desc' => "Määrittää, montaako eri vaihtoehtoa henkilö voi äänestää",
+	'poll:max_votes:exceeded' => "Äänten maksimimäärä ei voi ylittää vaihtoehtojen määrää",
+	'poll:max_votes:info' => "Voit äänestää %s vaihtoehtoa",
 
 	/**
 	 * Poll widget

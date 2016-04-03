@@ -120,6 +120,7 @@ function poll_prepare_edit_body_vars($poll = null) {
 		'description' => null,
 		'close_date' => null,
 		'open_poll' => null,
+		'max_votes' => null,
 		'tags' => null,
 		'front_page' => null,
 		'access_id' => ACCESS_DEFAULT,
@@ -327,5 +328,20 @@ function poll_manage_front_page($poll, $front_page) {
 				$poll->front_page = 1;
 			}
 		}
+	}
+}
+
+function poll_is_upgrade_available() {
+	require_once elgg_get_plugins_path() . "poll/version.php";
+
+	$local_version = elgg_get_plugin_setting('local_version', 'poll');
+	if ($local_version === false) {
+		$local_version = 0;
+	}
+
+	if ($local_version == $version) {
+		return false;
+	} else {
+		return true;
 	}
 }
