@@ -37,6 +37,8 @@ return array(
 	'poll:convert' => 'Mettre à jour les sondages maintenant',
 	'poll:convert:confirm' => "La mise à jour est irréversible. Confirmez-vous vouloir convertir la structure de données des choix des votes ?",
 
+	'poll:settings:notification_on_vote:title' => "Notifier l'auteur lorsque quelqu'un a voté sur un sondage ?",
+	'poll:settings:notification_on_vote:desc' => "(L'auteur recevra des notifications en fonction de ses réglages personnels et de la configuration globale des notifications, par ex. notifications par email et/ou notifications du site ou aucune)",
 	'poll:settings:group:title' => "Activer les sondages du groupe ?",
 	'poll:settings:group_poll_default' => "Oui, activé par défaut",
 	'poll:settings:group_poll_not_default' => "Oui, désactivé par défaut",
@@ -52,6 +54,8 @@ return array(
 	'poll:settings:allow_open_poll:desc' => "(les sondages ouverts affichent les noms des membres qui ont voté pour chacun des choix du sondage ; si cette option est activée, les administrateurs peuvent voir qui a voté pour quel choix sur tous les sondages)",
 	'poll:settings:allow_poll_reset:title' => "Autoriser les auteurs des sondages à réinitiliser les votes sur leurs sondages ?",
 	'poll:settings:allow_poll_reset:desc' => "(l'activation de cette option va ajouter un bouton de titre visible des auteurs de sondages et des administrateurs qui leur permet de réinitialiser tous les votes sur un sondage ; les administateurs auront touours la possibilité de réinitialiser les votes même si cette option est désactivée)",
+	'poll:settings:multiple_answer_polls:title' => "Permettre des sondages à réponses multiples ?",
+	'poll:settings:multiple_answer_polls:desc' => "(Dans ces sondages, les membres peuvent sélectionner plusieurs réponses lorsqu'ils votent. Le nombre maximum de choix possibles est défini par l'auteur du sondage. Si vous désactivez les réponses multiples après que de tels sondages aient été créés, le nombre de choix autorisés dans  es sondages ne va pas changer à moins que vous ne modifiez les choix du sondage. Dans le cas où les choix du sondage sont modifiés, le nombre maximum de choix autorisés sera réinitialisé à 1, à moins que plusieurs réponses ne soient autorisées au moment de la modification)",
 	'poll:none' => "Aucun sondage.",
 	'poll:not_found' => "Le sondage n'a pas été trouvé.",
 	'poll:permission_error' => "Vous n'avez pas la permission de modifier ce sondage.",
@@ -64,7 +68,12 @@ return array(
 	'poll:can_not_create' => "Vous n'avez pas la permission de créer des sondages.",
 	'poll:front_page_label' => "Faire de ce sondage le nouveau \"Sondage à la Une\"",
 	'poll:open_poll_label' => "Afficher dans les résultats quels membres ont voté pour quel choix (sondage ouvert)",
-	'poll:show_voters' => "Afficher les votes",
+	'poll:show_voters' => "Afficher les votants",
+	'poll:max_votes:label' => "Permettre une sélection multiple de choix par participant jusqu'à un maximum de",
+	'poll:max_votes:desc' => "Si vous saisissez un nombre supérieur à 1, le sondage va devenir un sondage à choix multiple qui permet aux participants de sélectionner plusieurs choix jusqu'à un maximum de choix défini ici. Vous ne pouvez pas saisir un nombre plus grand que le nombre total de choix du sondage.",
+	'poll:max_votes:exceeded' => "Le nombre maximum de choix sélectionnable ne peut pas dépasser le nombre total de choix du sondage.",
+	'poll:max_votes:info' => "Vous pouvez sélectionner plusieurs choix jusqu'à un maximum de %s pour votre vote.",
+	'poll:max_votes:not_allowed_hint' => "ATTENTION: quand ce sondage a été créé la configuration du site autorisait des sondages à choix multiples, mais cette fonctionnalité n'est plus activée. Actuellement ce sondage permet aux votants de sélectionner jusqu'à %s choix lorsqu'ils votent, et ce nombre ne sera pas modifié à moins que vous ne modifiiez les choix du sondage. Mais si vous modifiez les choix du sondage, le nombre maximum de choix pour les votants sera réinitialisé à 1.",
 
 	/**
 	 * Poll widget
@@ -114,6 +123,8 @@ return array(
 Afficher le sondage et voter :
 %s
 ',
+	'poll:notification_on_vote:subject' => "Nouveau vote sur le sondage",
+	'poll:notification_on_vote:body' => "%s,\n\nun nouveau vote a été ajouté pour votre sondage \"%s\".\n\nVous pouvez afficher les résultats actuel via ce lien : \n\n%s\n",
 
 	/**
 	 * Poll river
@@ -137,11 +148,13 @@ Afficher le sondage et voter :
 	'poll:totalvotes' => "Nombre total de votes : ",
 	'poll:voted' => "Votre vote a bien été enregistré. Merci d'avoir voté sur ce sondage.",
 	'poll:poll_reset_success' => "Le sondage a bien été réinitialisé.",
+	'poll:upgrade' => 'Mise à niveau',
+	'poll:upgrade:success' => 'Mise à niveau du plugin Poll réussie.',
 
 	/**
 	 * Error messages
 	 */
-	'poll:blank' => "Désolé : vous devez compléter à la fois la question, et ajouter au moins un choix pour le vote avant de pouvoir enregistrer votre sondage.",
+	'poll:blank' => "Désolé : vous devez au moins indiquer une question, et ajouter un choix pour le vote avant de pouvoir enregistrer votre sondage.",
 	'poll:alreadyvoted' => "Désolé : vous ne pouvez répondre qu'une seule fois.",
 	'poll:novote' => "Désolé : vous devez choisir une option pour voter dans ce sondage.",
 	'poll:notfound' => "Désolé : impossible de trouver le sondage correspondant.",
