@@ -26,7 +26,7 @@ define(function(require) {
 	/**
 	 * Add a new empty text field to the form
 	 *
- 	 * @param {Object} e The click event
+	 * @param {Object} e The click event
 	 */
 	var addChoice = function(e) {
 		// Create a new input element
@@ -48,12 +48,17 @@ define(function(require) {
 	/**
 	 * Remove a poll choice
 	 *
- 	 * @param {Object} e The click event
+	 * @param {Object} e The click event
 	 */
 	function deleteChoice(e) {
 		var id = $(this).data('id');
 
 		$('#choice-container-' + id).remove();
+
+		// Decrement total number of choices
+		cnum--;
+		$('#number-of-choices').val(cnum);
+
 
 		e.preventDefault();
 	}
