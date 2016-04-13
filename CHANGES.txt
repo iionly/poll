@@ -1,6 +1,11 @@
 Changelog
 =========
 
+2.0.2
+-----
+
+- Finnish translation updated.
+
 2.0.1
 -----
 
