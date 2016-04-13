@@ -154,7 +154,7 @@ Afficher le sondage et voter :
 	/**
 	 * Error messages
 	 */
-	'poll:blank' => "Désolé : vous devez au moins indiquer une question, et ajouter un choix pour le vote avant de pouvoir enregistrer votre sondage.",
+	'poll:blank' => "Désolé : vous devez indiquer au moins une question, et ajouter au moins un choix pour le vote avant de pouvoir enregistrer votre sondage.",
 	'poll:alreadyvoted' => "Désolé : vous ne pouvez répondre qu'une seule fois.",
 	'poll:novote' => "Désolé : vous devez choisir une option pour voter dans ce sondage.",
 	'poll:notfound' => "Désolé : impossible de trouver le sondage correspondant.",

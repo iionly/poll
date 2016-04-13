@@ -1,7 +1,7 @@
 Poll plugin for Elgg 1.10 - 1.12
 ================================
 
-Latest Version: 1.10.6  
+Latest Version: 1.10.7  
 Released: 2016-04-13  
 Contact: iionly@gmx.de  
 License: GNU General Public License version 2  

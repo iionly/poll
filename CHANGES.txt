@@ -1,6 +1,12 @@
 Changelog
 =========
 
+1.10.7
+------
+
+- French translation updated,
+- Finnish translation updated.
+
 1.10.6
 ------
 
