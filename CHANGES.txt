@@ -1,6 +1,18 @@
 Changelog
 =========
 
+1.10.6
+------
+
+- Feature: multiple-answer polls (users can select more than a single choice on voting). Poll creator can decide on the maximum number of choices selectable (thanks to Beaufort8 and Juho Jaakkola for implementing this feature),
+- Multiple-answer polls can be allowed/prevented by a new poll plugin settings,
+- Fixed: keep access_id of poll choices in sync with access_id of their poll when the poll's access_id is changed (to fix possible discrepancies in existing polls an update script that can be executed via the poll plugin settings page has been added - if the Upgrade button shows up, run the upgrade),
+- Feature: plugin option added to allow for notification of poll creators on new votes made in their polls (the creator will receive notifications depending on his/her user-specific, site-wide notification settings, i.e. email notifications and/or site-notifications or none),
+- Fixed: no longer use the $closing_date variable in the poll object view before intializing it (had resulted in a warning),
+- Fixed: internal poll choice counter on input form counts correctly (by also decrementing removed choices),
+- Rework on plugin settings page layout,
+- French translation added (thanks to Facyla).
+
 1.10.5
 ------
 
