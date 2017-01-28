@@ -5,7 +5,7 @@ $poll = elgg_extract('poll', $vars);
 
 elgg_require_js('elgg/poll/edit');
 
-$body = '';
+$body = '<div id="old-choices-area">';
 $i = 0;
 
 if ($poll) {
@@ -34,6 +34,8 @@ if ($poll) {
 	}
 }
 
+$body .="</div>";
+
 $body .= '<div id="new-choices-area"></div>';
 
 $body .= elgg_view('input/button', array(
@@ -45,6 +47,11 @@ $body .= elgg_view('input/button', array(
 $body .= elgg_view('input/hidden', array(
 	'name' => 'number_of_choices',
 	'id' => 'number-of-choices',
+	'value' => $i,
+));
+$body .= elgg_view('input/hidden', array(
+	'name' => 'max_choice_id',
+	'id' => 'max-choice-id',
 	'value' => $i,
 ));
 

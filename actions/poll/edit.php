@@ -14,6 +14,7 @@ elgg_make_sticky_form('poll');
 $question = get_input('question');
 $description = get_input('description');
 $number_of_choices = (int) get_input('number_of_choices', 0);
+$max_choice_id = (int) get_input('max_choice_id', 0);
 $front_page = get_input('front_page');
 $close_date = get_input('close_date');
 $open_poll = (int)get_input('open_poll');
@@ -26,14 +27,20 @@ $guid = get_input('guid');
 //get response choices
 $count = 0;
 $new_choices = array();
-if ($number_of_choices) {
-	for($i=0; $i<$number_of_choices; $i++) {
+if ($number_of_choices && $max_choice_id) {
+	for($i=0; $i<$max_choice_id; $i++) {
 		$text = get_input('choice_text_'.$i,'');
 		if ($text) {
 			$new_choices[] = $text;
 			$count ++;
 		}
 	}
+}
+
+// Make sure the number of choices fetched up to $max_choice_id is equal $number_of_choices
+if ($number_of_choices != $count) {
+	register_error(elgg_echo("poll:choice_number_mismatch"));
+	forward(REFERER);
 }
 
 // Make sure the question and the response options aren't empty
