@@ -148,8 +148,8 @@ function poll_prepare_edit_body_vars($poll = null) {
 }
 
 function poll_get_page_list($page_type, $container_guid = null) {
-	global $autofeed;
-	$autofeed = true;
+	elgg_register_rss_link();
+
 	$user = elgg_get_logged_in_user_entity();
 	$params = array();
 	$options = array(
