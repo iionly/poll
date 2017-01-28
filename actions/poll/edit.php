@@ -144,11 +144,25 @@ if ($poll_create_in_river != 'no') {
 		));
 	} else {
 		// first remove any previous river entries referring to updating this poll to avoid duplicate entries
-		elgg_delete_river(array(
+		$access = elgg_set_ignore_access(true);
+		$access_status = access_get_show_hidden_status();
+		access_show_hidden_entities(true);
+
+		$river_items = new ElggBatch('elgg_get_river', array(
 			'view' => 'river/object/poll/update',
 			'action_type' => 'update',
 			'object_guid' => $poll->guid,
+			'limit' => false,
 		));
+
+		$river_items->setIncrementOffset(false);
+		foreach ($river_items as $river_item) {
+			$river_item->delete();
+		}
+
+		access_show_hidden_entities($access_status);
+		elgg_set_ignore_access($access);
+
 		// let the river entry on updating a poll be made in the name of the poll owner in any case
 		$user = $poll->getOwnerEntity();
 		elgg_create_river_item(array(

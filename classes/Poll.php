@@ -89,11 +89,24 @@ class Poll extends ElggObject {
 	 * Delete all votes associated with this poll, reset vote counters and delete associated vote river items
 	 */
 	public function deleteVotes() {
-		elgg_delete_river(array(
+		$access = elgg_set_ignore_access(true);
+		$access_status = access_get_show_hidden_status();
+		access_show_hidden_entities(true);
+
+		$river_items = new ElggBatch('elgg_get_river', array(
 			'view' => 'river/object/poll/vote',
 			'action_type' => 'vote',
 			'object_guid' => $this->guid,
+			'limit' => false,
 		));
+
+		$river_items->setIncrementOffset(false);
+		foreach ($river_items as $river_item) {
+			$river_item->delete();
+		}
+
+		access_show_hidden_entities($access_status);
+		elgg_set_ignore_access($access);
 
 		elgg_delete_annotations(array(
 			'guid' => $this->guid,
