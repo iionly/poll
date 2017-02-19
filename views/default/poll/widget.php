@@ -51,7 +51,7 @@ if ($poll->comments_on != 'Off') {
 	$comments_link = '';
 }
 
-$icon = '<img src="' . elgg_get_simplecache_url('poll/poll.png') . '" />';
+$icon = '<img src="' . elgg_get_simplecache_url('poll/poll.png') . '" alt="" />';
 $info = "<a href=\"{$poll->getURL()}\">{$poll->question}</a><br>";
 if ($responses == 1) {
 	$noun = elgg_echo('poll:noun_response');
