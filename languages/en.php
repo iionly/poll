@@ -162,5 +162,5 @@ View and vote on the poll:
 	'poll:notdeleted' => "Sorry: we could not delete this poll.",
 	'poll:poll_reset_denied' => "Sorry: you have no sufficient permission for resetting this poll.",
 	'poll:error' => "Sorry: saving the poll has failed due to an unknown error.",
-	'poll:choice_number_mismatch' => "Sorry: saving the poll has failed, because there was a mismatch of the number of poll choices to be saved and the expected total number of poll choices.",
+	'poll:choice_number_mismatch' => "Sorry: saving the poll has failed, because there was a mismatch of the number of poll choices to be saved and the expected total number of poll choices or at least one of the poll choices contained no text.",
 );

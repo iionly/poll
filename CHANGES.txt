@@ -1,6 +1,18 @@
 Changelog
 =========
 
+2.3.3
+-----
+
+- Increased minimum required Elgg version to 2.3.0,
+- Fixed deprecation issue with $autofeed by using elgg_register_rss_link(),
+- Populate 'entity' attribute on calling object/elements/full view,
+- No longer use deprecated elgg_delete_river(),
+- Prevent duplicate element ids to be used when adding/removing poll choices on editing a poll,
+- Allow for removal of existing poll choices when editing a poll,
+- Display correct closing date in info text in widgets after a poll is closed,
+- Add alt attribute within img tag in widget view (strictly speaking necessary by html standard but as the image is purely decoration it's just been an empty alt attribute value that has been missing...).
+
 2.0.2
 -----
 
