@@ -1,6 +1,11 @@
 Changelog
 =========
 
+2.3.4
+-----
+
+- Important(!): fixed fetching of old river items to be deleted on editing of existing polls (with version 2.3.3 the updated code that replaced elgg_delete_river() could fetch more and complete unrelated river items that got deleted, too ---> UPDATE!).
+
 2.3.3
 -----
 

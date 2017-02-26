@@ -94,10 +94,10 @@ class Poll extends ElggObject {
 		access_show_hidden_entities(true);
 
 		$river_items = new ElggBatch('elgg_get_river', array(
-			'view' => 'river/object/poll/vote',
 			'action_type' => 'vote',
 			'object_guid' => $this->guid,
 			'limit' => false,
+			'wheres' => array("rv.view = \"river/object/poll/vote\""),
 		));
 
 		$river_items->setIncrementOffset(false);

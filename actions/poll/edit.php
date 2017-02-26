@@ -156,10 +156,10 @@ if ($poll_create_in_river != 'no') {
 		access_show_hidden_entities(true);
 
 		$river_items = new ElggBatch('elgg_get_river', array(
-			'view' => 'river/object/poll/update',
 			'action_type' => 'update',
 			'object_guid' => $poll->guid,
 			'limit' => false,
+			'wheres' => array("rv.view = \"river/object/poll/update\""),
 		));
 
 		$river_items->setIncrementOffset(false);
