@@ -104,6 +104,7 @@ class Poll extends ElggObject {
 
 		$this->responses_by_choice = array();
 		$this->response_count = 0;
+		$this->voter_count = 0;
 	}
 
 	/**

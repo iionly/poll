@@ -81,6 +81,7 @@ if (isset($vars['entity'])) {
 		$summary = elgg_view('object/elements/summary', $params);
 
 		echo elgg_view('object/elements/full', array(
+			'entity' => $poll,
 			'summary' => $summary,
 			'icon' => $owner_icon
 		));

@@ -22,9 +22,9 @@ if (elgg_is_logged_in()) {
 		if ($allow_close_date == 'yes' && !$poll->isOpen()) {
 			$results_display = "block";
 			$show_text = elgg_echo('poll:show_poll');
-			$date_day = date('j', $poll->close_date);
-			$date_month = date('m', $poll->close_date);
-			$date_year = date('Y', $poll->close_date);
+			$date_day = gmdate('j', $poll->close_date);
+			$date_month = gmdate('m', $poll->close_date);
+			$date_year = gmdate('Y', $poll->close_date);
 			$friendly_time = $date_day . '. ' . elgg_echo("poll:month:$date_month") . ' ' . $date_year;
 			$voted_text = elgg_echo("poll:voting_ended", array($friendly_time));
 			$can_vote = false;

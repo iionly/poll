@@ -1,6 +1,15 @@
 Changelog
 =========
 
+1.10.8
+------
+
+- Populate 'entity' attribute on calling object/elements/full view,
+- Prevent duplicate element ids to be used when adding/removing poll choices on editing a poll,
+- Allow for removal of existing poll choices when editing a poll,
+- Display correct closing date in info text in widgets after a poll is closed,
+- Add alt attribute within img tag in widget view (strictly speaking necessary by html standard but as the image is purely decoration it's just been an empty alt attribute value that has been missing...).
+
 1.10.7
 ------
 

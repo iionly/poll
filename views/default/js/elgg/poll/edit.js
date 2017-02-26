@@ -7,15 +7,19 @@ define(function(require) {
 
 	// Total number of choices
 	var cnum = 0;
+	// Max choice id counter
+	var cid = 0;
 
 	/**
 	 * Initialize the poll editing javascript
 	 */
 	function init() {
 		$('#add-choice').on('click', addChoice);
+		$('#old-choices-area').on('click', '.delete-choice', deleteChoice);
 		$('#new-choices-area').on('click', '.delete-choice', deleteChoice);
 
 		cnum = parseInt($('#number-of-choices').val());
+		cid = parseInt($('#max-choice-id').val());
 
 		$('#poll_edit_cancel').on('click', function() {
 			var forward = $(this).data('forward');
@@ -30,17 +34,19 @@ define(function(require) {
 	 */
 	var addChoice = function(e) {
 		// Create a new input element
-		var input = '<input type="text" class="poll_input-poll-choice" name="choice_text_' + cnum + '"> ';
+		var input = '<input type="text" class="poll_input-poll-choice" name="choice_text_' + cid + '"> ';
 		var deleteIcon = '<div class="elgg-icon elgg-icon-delete"></div>';
-		var deleteLink = '<a href="#" class="delete-choice" title="' + elgg.echo('poll:delete_choice') + '" data-id="' + cnum + '">' + deleteIcon + '</a>';
+		var deleteLink = '<a href="#" class="delete-choice" title="' + elgg.echo('poll:delete_choice') + '" data-id="' + cid + '">' + deleteIcon + '</a>';
 
-		var container = '<div id="choice-container-' + cnum + '">' + input + deleteLink + '</div>';
+		var container = '<div id="choice-container-' + cid + '">' + input + deleteLink + '</div>';
 
 		$('#new-choices-area').append(container);
 
-		// Increment total number of choices
+		// Increment total number of choices and max choice id counter
 		cnum++;
 		$('#number-of-choices').val(cnum);
+		cid++;
+		$('#max-choice-id').val(cid);
 
 		e.preventDefault();
 	};
@@ -58,6 +64,7 @@ define(function(require) {
 		// Decrement total number of choices
 		cnum--;
 		$('#number-of-choices').val(cnum);
+
 
 		e.preventDefault();
 	}

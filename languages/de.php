@@ -160,5 +160,7 @@ Schau Dir die Umfrage an und gib Deine Stimme ab:
 	'poll:alreadyvoted' => "Entschuldigung: Du kannst nur einmal abstimmen.",
 	'poll:notfound' => "Entschuldigung: die gewünschte Umfrage konnte nicht gefunden werden.",
 	'poll:notdeleted' => "Entschuldigung: beim Löschen der Umfrage ist ein Fehler aufgetreten.",
-	'poll:poll_reset_denied' => "Entschuldigung: Du hast keine ausreichende Berechtigung zum Zurücksetzen dieser Umfrage."
+	'poll:poll_reset_denied' => "Entschuldigung: Du hast keine ausreichende Berechtigung zum Zurücksetzen dieser Umfrage.",
+	'poll:error' => "Entschuldigung: das Speichern der Umfrage ist fehlgeschlagen.",
+	'poll:choice_number_mismatch' => "Entschuldigung: das Speichern der Umfrage ist fehlgeschlagen, da eine Diskrepanz zwischen der Anzahl der zu speichernden Auswahlmöglichkeiten und der erwarteten Gesamtzahl der Auswahlmöglichkeiten aufgetreten ist oder mindestens eine der Auswahlmöglichkeiten keinen Text enthält.",
 );
