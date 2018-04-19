@@ -3,7 +3,7 @@
 	<name>Poll</name>
 	<id>poll</id>
 	<author>iionly (for Elgg 1.8 and newer), Juho Jaakkola, Kevin Jardine, John Mellberg and Dr Sanu P Moideen (Team Webgalli)</author>
-	<version>2.3.4</version>
+	<version>3.0.0</version>
 	<category>communication</category>
 	<description>Poll plugin for site-wide and group-specific polls.</description>
 	<website>https://github.com/iionly</website>
@@ -11,7 +11,7 @@
 	<license>GNU Public License version 2</license>
 	<requires>
 		<type>elgg_release</type>
-		<version>2.3.0</version>
+		<version>3.0.0-alpha.1</version>
 	</requires>
 	<suggests>
 		<type>plugin</type>

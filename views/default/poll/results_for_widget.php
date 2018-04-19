@@ -6,7 +6,7 @@
 $poll = elgg_extract('entity', $vars);
 
 // Get array of possible responses
-$choices = poll_get_choice_array($poll);
+$choices = $poll->getChoiceArray();
 
 $total = $poll->getResponseCount();
 
@@ -33,6 +33,7 @@ foreach ($choices as $choice) {
 
 		// TODO Would it be possible to use elgg_list_annotations() with
 		// custom view that displays only annotation owner icons?
+		// Matt: yes :)
 		$response_annotations = elgg_get_annotations(array(
 			'guid' => $poll->guid,
 			'annotation_name' => 'vote',
@@ -73,12 +74,16 @@ foreach ($choices as $choice) {
 		$percentage = round($response_count / $total * 100);
 	}
 
+	$progressbar = elgg_format_element('div', [
+		'class' => 'elgg-progressbar mvl',
+		'data-guid' => $poll->guid,
+		'data-value' => $percentage
+	]);
+
 	echo <<<HTML
-	<div class="poll-result">
+	<div class="poll-result poll-result-{$poll->guid}">
 		<label title="$response_title">$response_label</label>
-		<div class="poll-progress">
-			<div class="poll-progress-filled" style="width: {$percentage}%"></div>
-		</div>
+		$progressbar
 		<div $hidden id=poll-users-vote-{$vote_id}>$voted_users</div>
 	</div>
 HTML;
@@ -87,3 +92,14 @@ HTML;
 ?>
 
 <p><?php echo elgg_echo('poll:totalvotes', array($poll->getVoterCount())); ?></p>
+<script>
+require(['jquery'], function($) {
+	$('.poll-result-<?= $poll->guid ?> .elgg-progressbar').each(function(index, element) {
+		var value = $(element).attr('data-value');
+		$(element).progressbar({
+			value: parseInt(value),
+			total: 100
+		});
+	});
+});
+</script>

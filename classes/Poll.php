@@ -1,4 +1,7 @@
 <?php
+
+use Elgg\Database\Clauses\WhereClause;
+
 /**
  * Class that represents an object of subtype poll
  */
@@ -97,7 +100,9 @@ class Poll extends ElggObject {
 			'action_type' => 'vote',
 			'object_guid' => $this->guid,
 			'limit' => false,
-			'wheres' => array("rv.view = \"river/object/poll/vote\""),
+			'wheres' => [
+				new WhereClause("rv.view = \"river/object/poll/vote\"")	
+			]
 		));
 
 		$river_items->setIncrementOffset(false);
@@ -305,5 +310,15 @@ class Poll extends ElggObject {
 		$this->fetchResponses();
 
 		return $this->voter_count;
+	}
+
+	public function getChoiceArray() {
+		$responses = array();
+
+		foreach($this->getChoices() as $choice) {
+			$responses[$choice->text] = $choice->text;
+		}
+
+		return $responses;
 	}
 }

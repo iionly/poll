@@ -1,5 +1,4 @@
 <?php
-elgg_load_library('elgg:poll');
 
 $poll = elgg_extract('entity', $vars);
 

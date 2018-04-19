@@ -6,8 +6,6 @@
  *
  */
 
-elgg_load_library('elgg:poll');
-
 $widget = elgg_extract("entity", $vars);
 
 $options = array(

@@ -15,7 +15,7 @@ if ($poll->max_votes > 1) {
 
 $response_input = elgg_view($input_type, array(
 	'name' => 'response',
-	'options' => poll_get_choice_array($poll),
+	'options' => $poll->getChoiceArray()
 ));
 
 $submit_input = elgg_view('input/submit', array(

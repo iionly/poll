@@ -1,8 +1,6 @@
 <?php
 
-elgg_load_library('elgg:poll');
-
-if (poll_is_upgrade_available()) {
+if (\Poll\Model::isUpgradeAvailable()) {
 	echo '<div class="mtl mbl elgg-admin-notices">';
 	echo '<p>';
 	echo elgg_view('output/url', array(
