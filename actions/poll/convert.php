@@ -1,7 +1,5 @@
 <?php
 
-elgg_load_library('elgg:poll');
-
 // Make sure that entries for disabled entities also get upgraded
 $access_status = access_get_show_hidden_status();
 access_show_hidden_entities(true);

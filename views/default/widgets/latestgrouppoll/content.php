@@ -10,8 +10,6 @@
  * @uses $vars['entity'] Optionally, the poll post to view
  */
 
-elgg_load_library('elgg:poll');
-
 $widget = elgg_extract("entity", $vars);
 
 // get the num of polls the user want to display

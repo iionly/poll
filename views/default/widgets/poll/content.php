@@ -4,8 +4,6 @@
  * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU Public License version 2
  */
 
-elgg_load_library('elgg:poll');
-
 $widget = elgg_extract("entity", $vars);
 
 // get the num of polls the user want to display

@@ -1,12 +1,13 @@
 <?php
+
+use Elgg\Database\Clauses\WhereClause;
+
 /*
  * Elgg Poll plugin
  * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU Public License version 2
  *
  * add/edit action
  */
-
-elgg_load_library('elgg:poll');
 // start a new sticky form session in case of failure
 elgg_make_sticky_form('poll');
 
@@ -136,7 +137,7 @@ if ($new) {
 	}
 }
 
-poll_manage_front_page($poll, $front_page);
+\Poll\Model::manageFrontPage($poll, $front_page);
 
 elgg_clear_sticky_form('poll');
 
@@ -159,7 +160,9 @@ if ($poll_create_in_river != 'no') {
 			'action_type' => 'update',
 			'object_guid' => $poll->guid,
 			'limit' => false,
-			'wheres' => array("rv.view = \"river/object/poll/update\""),
+			'wheres' => [
+				new WhereClause("rv.view = \"river/object/poll/update\"")
+			]
 		));
 
 		$river_items->setIncrementOffset(false);

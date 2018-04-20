@@ -135,8 +135,11 @@ View and vote on the poll:
 	'poll:settings:send_notification:title' => "Send notification when a poll is created?",
 	'poll:settings:send_notification:desc' => "(Members will only receive notifications if they are friend with the creator of the poll or a member of the group the poll was added to. Additionally, notifications will only be sent to members who configured Elgg's notification settings accordingly)",
 	'river:create:object:poll' => '%s created a poll %s',
-	'river:update:object:poll' => '%s updated a poll %s',
-	'river:vote:object:poll' => '%s voted on the poll %s',
+	'river:object:poll:create' => '%s created a poll %s', // deprecated
+	'river:update:object:poll' => '%s updated a poll %s', // deprecated
+	'river:object:poll:update' => '%s updated a poll %s',
+	'river:vote:object:poll' => '%s voted on the poll %s', // deprecated
+	'river:object:poll:vote' => '%s voted on the poll %s',
 	'river:comment:object:poll' => '%s commented on the poll %s',
 
 	/**

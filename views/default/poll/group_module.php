@@ -9,12 +9,11 @@
  *
  */
 
-elgg_load_library('elgg:poll');
 elgg_require_js('elgg/poll/poll');
 
 $group = elgg_get_page_owner_entity();
 
-if (poll_activated_for_group($group)) {
+if (\Poll\Model::isEnabledForGroup($group)) {
 	elgg_push_context('widgets');
 	$all_link = elgg_view('output/url', array(
 		'href' => "poll/group/$group->guid/all",
