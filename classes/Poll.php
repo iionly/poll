@@ -65,7 +65,7 @@ class Poll extends ElggObject {
 			'order_by_metadata' => array(
 				'name' => 'display_order',
 				'direction' => 'ASC',
-				'as' => integer
+				'as' => 'integer',
 			),
 		));
 

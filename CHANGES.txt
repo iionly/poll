@@ -1,6 +1,11 @@
 Changelog
 =========
 
+2.3.5
+-----
+
+- Fix: correct usage of 'integer' constant with apostrophes in function call instead of without as this would fail otherwise on future versions of PHP (deprecation warning).
+
 2.3.4
 -----
 
