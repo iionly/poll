@@ -3,8 +3,6 @@
  * Poll plugin upgrade action
  */
 
-elgg_load_library('elgg:poll');
-
 $plugins_path = elgg_get_plugins_path();
 
 require_once "{$plugins_path}poll/version.php";

@@ -276,10 +276,13 @@ function poll_get_page_view($guid) {
 			));
 		}
 
+		//Seri 10/22/2020 - commented below block to remove duplicate comment section
+		/*
 		//check to see if comments are on
 		if ($poll->comments_on != 'Off') {
 			$content .= elgg_view_comments($poll);
 		}
+		*/
 
 		if (elgg_instanceof($page_owner,'user')) {
 			elgg_push_breadcrumb($page_owner->name, "poll/owner/{$page_owner->username}");

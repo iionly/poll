@@ -1,5 +1,14 @@
 Changelog
 =========
+3.0.0
+-----
+- Updated the poll version in the manifest.xml
+- Created elgg-plugin.php
+- Created classes/PollBootstrap.php
+- Created lib/hooks.php
+- Created resources/poll as well as add.php all.php edit.php friends.php group.php owner.php view.php
+- Removed views.php, activate.php, deactivate.php, and start.php
+- Replaced Elgg 2 functions with Elgg 3 functions
 
 2.3.5
 -----

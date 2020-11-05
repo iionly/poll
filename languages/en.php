@@ -6,6 +6,7 @@ return array(
 	 * Menu items and titles
 	 */
 	'poll' => "Polls",
+	'collection:object:poll' => "Polls",
 	'poll:add' => "New Poll",
 	'poll:group_poll' => "Group polls",
 	'poll:group_poll:listing:title' => "%s's polls",

@@ -8,10 +8,5 @@
  * @Modified By Team Webgalli to work with ElggV1.5
  * www.webgalli.com or www.m4medicine.com
  */
-?>
 
-<p>
-	<?php
-		echo elgg_echo("poll:notfound");
-	?>
-</p>
+echo elgg_format_element('p', [], elgg_echo("poll:notfound"));

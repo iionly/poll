@@ -4,7 +4,7 @@
  */
 
 $poll = $vars['entity'];
-$multiple_hint = "";
+$multiple_hint = '';
 
 if ($poll->max_votes > 1) {
 	$input_type = 'input/checkboxes';

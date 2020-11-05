@@ -6,7 +6,6 @@
  * add/edit action
  */
 
-elgg_load_library('elgg:poll');
 // start a new sticky form session in case of failure
 elgg_make_sticky_form('poll');
 
